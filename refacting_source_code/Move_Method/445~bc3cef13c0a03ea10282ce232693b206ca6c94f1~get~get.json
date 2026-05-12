@@ -1,0 +1,18 @@
+{
+  "SHA": "bc3cef13c0a03ea10282ce232693b206ca6c94f1",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/idempotent/BitSetIdempotentStrategyHandler.java",
+  "right_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/idempotent/RetryIdempotentStrategyHandler.java",
+  "before_name": "get",
+  "after_name": "get",
+  "before_class": {
+    "name": "BitSetIdempotentStrategyHandler",
+    "code": "public class BitSetIdempotentStrategyHandler implements IdempotentStrategy<String, Integer> {\n    /**\n     * BIT_SET_MAP[key] : group\n     * BIT_SET_MAP[value] : BitSet\n     */\n    public static final ConcurrentMap<String, BitSet> BIT_SET_MAP = new ConcurrentHashMap<>();\n\n    @Override\n    public boolean set(String groupId, Integer key) {\n\n        BitSet bitSet = BIT_SET_MAP.get(groupId);\n        if (Objects.isNull(bitSet)) {\n\n            bitSet = new BitSet(16);\n            bitSet.set(key, Boolean.TRUE);\n            BIT_SET_MAP.put(groupId, bitSet);\n        }\n\n        return Boolean.TRUE;\n    }\n\n    @Override\n    public Integer get(String s) {\n        throw new EasyRetryServerException(\"不支持的操作\");\n    }\n\n    @Override\n    public boolean isExist(String groupId, Integer value) {\n        BitSet bitSet = BIT_SET_MAP.getOrDefault(groupId, new BitSet(16));\n        return bitSet.get(value);\n    }\n\n    @Override\n    public boolean clear(String groupId, Integer value) {\n        BitSet bitSet = BIT_SET_MAP.get(groupId);\n        bitSet.clear(value);\n        return Boolean.TRUE;\n    }\n\n}"
+  },
+  "after_class": {
+    "name": "RetryIdempotentStrategyHandler",
+    "code": "public class RetryIdempotentStrategyHandler implements IdempotentStrategy<String, Long> {\n    private static final Cache<String, Long> cache;\n\n    static {\n        cache = CacheBuilder.newBuilder()\n                .concurrencyLevel(16) // 并发级别\n                .expireAfterWrite(60, TimeUnit.SECONDS)\n                .build();\n    }\n\n    @Override\n    public boolean set(String groupId, Long value) {\n        cache.put(getKey(groupId, value), value);\n        return Boolean.TRUE;\n    }\n\n    @Override\n    public Long get(String s) {\n        throw new EasyRetryServerException(\"不支持的操作\");\n    }\n\n    @Override\n    public boolean isExist(String groupId, Long value) {\n        return cache.asMap().containsKey(getKey(groupId, value));\n    }\n\n    @Override\n    public boolean clear(String groupId, Long value) {\n        cache.invalidate(getKey(groupId, value));\n        return Boolean.TRUE;\n    }\n\n    private static String getKey(final String key, final Long value) {\n        return key.concat(StrUtil.UNDERLINE).concat(String.valueOf(value));\n    }\n}"
+  },
+  "before_function": "Integer get(String s) {\n        throw new EasyRetryServerException(\"不支持的操作\");\n    }",
+  "after_function": "Long get(String s) {\n        throw new EasyRetryServerException(\"不支持的操作\");\n    }"
+}

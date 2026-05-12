@@ -1,0 +1,21 @@
+{
+  "SHA": "a1e1091eb303c969f8c4227cba6244c7551bc553",
+  "type": "Extract Method",
+  "before_path": "snail-job-client/snail-job-client-job-core/src/main/java/com/aizuda/snailjob/client/job/core/util/ValidatorUtils.java",
+  "after_path": "snail-job-client/snail-job-client-job-core/src/main/java/com/aizuda/snailjob/client/job/core/util/ValidatorUtils.java",
+  "source_method": "validateEntity",
+  "extracted_method": "validateEntity",
+  "before_class": {
+    "name": "ValidatorUtils",
+    "code": "\npublic class ValidatorUtils {\n    private static final Validator validator;\n\n    static {\n        validator = Validation.buildDefaultValidatorFactory().getValidator();\n    }\n\n    /**\n     * 校验对象\n     *\n     * @param object 待校验对象\n     * @throws SnailJobClientException 校验不通过，则报SnailJobClientException异常\n     */\n    public static Pair<Boolean, String> validateEntity(Object object) {\n        Set<ConstraintViolation<Object>> constraintViolations = validator.validate(object);\n        if (!constraintViolations.isEmpty()) {\n            StringBuilder msg = new StringBuilder();\n            for (ConstraintViolation<Object> constraint : constraintViolations) {\n                msg.append(constraint.getMessage()).append(\"\\n\");\n            }\n            return Pair.of(Boolean.FALSE, msg.toString());\n        } else {\n            return Pair.of(Boolean.TRUE, null);\n        }\n    }\n}"
+  },
+  "after_classes": [
+    {
+      "name": "ValidatorUtils",
+      "code": "\npublic class ValidatorUtils {\n    private static final Validator validator;\n\n    static {\n        validator = Validation.buildDefaultValidatorFactory().getValidator();\n    }\n\n    public static Pair<Boolean, String> validateEntity(Object object) {\n        Set<ConstraintViolation<Object>> constraintViolations = validator.validate(object);\n        return validateEntity(constraintViolations, object);\n    }\n\n    public static Pair<Boolean, String> validateEntity(Class<?> group, Object object) {\n        Set<ConstraintViolation<Object>> constraintViolations = validator.validate(object, group);\n        return validateEntity(constraintViolations, object);\n    }\n\n    /**\n     * 校验对象\n     *\n     * @param object 待校验对象\n     * @throws SnailJobClientException 校验不通过，则报SnailJobClientException异常\n     */\n    public static Pair<Boolean, String> validateEntity( Set<ConstraintViolation<Object>> constraintViolations, Object object) {\n        if (!constraintViolations.isEmpty()) {\n            StringBuilder msg = new StringBuilder();\n            for (ConstraintViolation<Object> constraint : constraintViolations) {\n                msg.append(constraint.getMessage()).append(\"\\n\");\n            }\n            return Pair.of(Boolean.FALSE, msg.toString());\n        } else {\n            return Pair.of(Boolean.TRUE, null);\n        }\n    }\n}"
+    }
+  ],
+  "before_function": "Pair<Boolean, String> validateEntity(Object object) {\n        Set<ConstraintViolation<Object>> constraintViolations = validator.validate(object);\n        if (!constraintViolations.isEmpty()) {\n            StringBuilder msg = new StringBuilder();\n            for (ConstraintViolation<Object> constraint : constraintViolations) {\n                msg.append(constraint.getMessage()).append(\"\\n\");\n            }\n            return Pair.of(Boolean.FALSE, msg.toString());\n        } else {\n            return Pair.of(Boolean.TRUE, null);\n        }\n    }",
+  "after_source_function": "Pair<Boolean, String> validateEntity(Object object) {\n        Set<ConstraintViolation<Object>> constraintViolations = validator.validate(object);\n        return validateEntity(constraintViolations, object);\n    }",
+  "after_extracted_function": "Pair<Boolean, String> validateEntity(Object object) {\n        Set<ConstraintViolation<Object>> constraintViolations = validator.validate(object);\n        return validateEntity(constraintViolations, object);\n    }"
+}

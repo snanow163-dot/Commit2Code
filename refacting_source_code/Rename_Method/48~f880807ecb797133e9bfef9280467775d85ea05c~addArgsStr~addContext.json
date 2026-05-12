@@ -1,0 +1,17 @@
+{
+  "SHA": "f880807ecb797133e9bfef9280467775d85ea05c",
+  "type": "Rename Method",
+  "path": "snail-job-client/snail-job-client-job-core/src/main/java/com/aizuda/snailjob/client/job/core/handler/trigger/TriggerWorkflowHandler.java",
+  "before_name": "addArgsStr",
+  "after_name": "addContext",
+  "before_class": {
+    "name": "TriggerWorkflowHandler",
+    "code": "\npublic class TriggerWorkflowHandler extends AbstractTriggerHandler<TriggerWorkflowHandler,Boolean> {\n\n\n    public TriggerWorkflowHandler(Long triggerJobId) {\n        super(triggerJobId);\n        setR(this);\n    }\n\n    @Override\n    protected void afterExecute(Boolean aBoolean) {\n\n    }\n\n    @Override\n    protected void beforeExecute() {\n\n    }\n\n    @Override\n    protected Boolean doExecute() {\n        Result<Object> result;\n        if (isOpenApiV2()) {\n            result = clientV2.triggerWorkFlow(getReqDTO());\n        } else {\n            result = client.triggerWorkFlow(getReqDTO());\n        }\n\n        Assert.isTrue(StatusEnum.YES.getStatus() == result.getStatus(),\n                () -> new SnailJobClientException(result.getMessage()));\n        return (Boolean) result.getData();\n    }\n\n    @Override\n    protected Pair<Boolean, String> checkRequest() {\n        return Pair.of(getReqDTO().getJobId() != null && !Long.valueOf(0).equals(getReqDTO().getJobId()), \"triggerJobId cannot be null and must be greater than 0\");\n    }\n\n    @Override\n    public TriggerWorkflowHandler addArgsStr(String argsKey, Object argsValue) {\n        return super.addArgsStr(argsKey, argsValue);\n    }\n}"
+  },
+  "after_class": {
+    "name": "TriggerWorkflowHandler",
+    "code": "\npublic class TriggerWorkflowHandler extends AbstractWorkflowTriggerHandler<TriggerWorkflowHandler,Boolean> {\n\n    public TriggerWorkflowHandler(Long triggerJobId) {\n        super(triggerJobId);\n        setR(this);\n    }\n\n    @Override\n    protected void afterExecute(Boolean aBoolean) {\n\n    }\n\n    @Override\n    protected void beforeExecute() {\n\n    }\n\n    @Override\n    protected Boolean doExecute() {\n        Result<Object> result;\n        if (isOpenApiV2()) {\n            result = clientV2.triggerWorkFlow(getReqDTO());\n        } else {\n            result = client.triggerWorkFlow(getReqDTO());\n        }\n\n        Assert.isTrue(StatusEnum.YES.getStatus() == result.getStatus(),\n                () -> new SnailJobClientException(result.getMessage()));\n        return (Boolean) result.getData();\n    }\n\n    @Override\n    protected Pair<Boolean, String> checkRequest() {\n        return Pair.of(getReqDTO().getWorkflowId() != null && !Long.valueOf(0).equals(getReqDTO().getWorkflowId()), \"triggerWorkFlow cannot be null and must be greater than 0\");\n    }\n\n    @Override\n    public TriggerWorkflowHandler addContext(String argsKey, Object argsValue) {\n        return super.addContext(argsKey, argsValue);\n    }\n}"
+  },
+  "before_function": "TriggerWorkflowHandler addArgsStr(String argsKey, Object argsValue) {\n        return super.addArgsStr(argsKey, argsValue);\n    }",
+  "after_function": "TriggerWorkflowHandler addContext(String argsKey, Object argsValue) {\n        return super.addContext(argsKey, argsValue);\n    }"
+}

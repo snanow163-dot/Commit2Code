@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/JobNotifyConfigResponseVOConverter.java",
+  "before_name": "batchConvert",
+  "after_name": "convertList",
+  "before_class": {
+    "name": "JobNotifyConfigResponseVOConverter",
+    "code": "public interface JobNotifyConfigResponseVOConverter {\n\n    JobNotifyConfigResponseVOConverter INSTANCE = Mappers.getMapper(JobNotifyConfigResponseVOConverter.class);\n\n    JobNotifyConfigResponseVO convert(JobNotifyConfig jobNotifyConfig);\n\n    List<JobNotifyConfigResponseVO> batchConvert(List<JobNotifyConfigResponseDO> jobNotifyConfigs);\n}"
+  },
+  "after_class": {
+    "name": "JobNotifyConfigResponseVOConverter",
+    "code": "public interface JobNotifyConfigResponseVOConverter {\n\n    JobNotifyConfigResponseVOConverter INSTANCE = Mappers.getMapper(JobNotifyConfigResponseVOConverter.class);\n\n    JobNotifyConfigResponseVO convert(JobNotifyConfig jobNotifyConfig);\n\n    List<JobNotifyConfigResponseVO> convertList(List<JobNotifyConfigResponseDO> jobNotifyConfigs);\n}"
+  },
+  "before_function": "List<JobNotifyConfigResponseVO> batchConvert(List<JobNotifyConfigResponseDO> jobNotifyConfigs);",
+  "after_function": "List<JobNotifyConfigResponseVO> convertList(List<JobNotifyConfigResponseDO> jobNotifyConfigs);"
+}

@@ -1,0 +1,18 @@
+{
+  "SHA": "7308479b686fb0bfec7c8e71e12e854883f83c84",
+  "type": "Move Method",
+  "left_path": "snail-job-server-dispatcher/snail-job-server-common/src/main/java/com/aizuda/snailjob/server/common/config/RestTemplateConfig.java",
+  "right_path": "snail-job-server-starter/src/main/java/com/aizuda/snailjob/server/SnailJobServerApplication.java",
+  "before_name": "restTemplate",
+  "after_name": "restTemplate",
+  "before_class": {
+    "name": "RestTemplateConfig",
+    "code": "public class RestTemplateConfig {\n\n    @Bean\n    public RestTemplate restTemplate(ClientHttpRequestFactory factory) {\n        return new RestTemplate(factory);\n    }\n\n    @Bean\n    public ClientHttpRequestFactory okHttp3ClientHttpRequestFactory() {\n\n        OkHttpClient okHttpClient = new OkHttpClient.Builder()\n                // 整个流程耗费的超时时间\n                .callTimeout(60, TimeUnit.SECONDS)\n                // 读取耗时\n                .readTimeout(5000, TimeUnit.MILLISECONDS)\n                // 三次握手 + SSL建立耗时\n                .connectTimeout(5000, TimeUnit.MILLISECONDS)\n                // 写入耗时\n                .writeTimeout(5000, TimeUnit.MILLISECONDS)\n                // 当连接失败，尝试重连\n                .retryOnConnectionFailure(true)\n                // 最大空闲连接数及连接的保活时间进行配置\n                .connectionPool(new ConnectionPool(200, 5, TimeUnit.MINUTES))\n                .addInterceptor(new RequestInterceptor())\n                .build();\n\n        return new OkHttp3ClientHttpRequestFactory(okHttpClient);\n    }\n\n}"
+  },
+  "after_class": {
+    "name": "SnailJobServerApplication",
+    "code": "public class SnailJobServerApplication {\n\n    public static void main(String[] args) {\n        TimeZone.setDefault(TimeZone.getTimeZone(\"Asia/Shanghai\"));\n        SpringApplication.run(SnailJobServerApplication.class, args);\n    }\n\n    @Bean\n    public RestTemplate restTemplate() {\n        return new RestTemplate();\n    }\n\n    @Bean\n    public ApplicationRunner nettyStartupChecker(GrpcServer grpcServer,\n                                                 ServletWebServerFactory serverFactory) {\n        return args -> {\n            // 判定Grpc\n            boolean started =  grpcServer.isStarted();\n            // 最长自旋10秒，保证 grpcHttpServer启动完成\n            int waitCount = 0;\n            while (!started && waitCount < 100) {\n                log.info(\"--------> snail-job server is staring....\");\n                TimeUnit.MILLISECONDS.sleep(100);\n                waitCount++;\n                started = grpcServer.isStarted();\n            }\n\n            if (!started) {\n                log.error(\"--------> snail-job server startup failure.\");\n                // Netty启动失败，停止Web服务和Spring Boot应用程序\n                serverFactory.getWebServer().stop();\n                SpringApplication.exit(SpringApplication.run(SnailJobServerApplication.class));\n            }\n        };\n    }\n}"
+  },
+  "before_function": "RestTemplate restTemplate(ClientHttpRequestFactory factory) {\n        return new RestTemplate(factory);\n    }",
+  "after_function": "RestTemplate restTemplate() {\n        return new RestTemplate();\n    }"
+}

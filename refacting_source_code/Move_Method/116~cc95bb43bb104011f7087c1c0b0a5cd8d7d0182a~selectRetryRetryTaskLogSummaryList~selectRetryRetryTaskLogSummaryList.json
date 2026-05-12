@@ -1,0 +1,18 @@
+{
+  "SHA": "cc95bb43bb104011f7087c1c0b0a5cd8d7d0182a",
+  "type": "Move Method",
+  "left_path": "snail-job-datasource/snail-job-datasource-template/src/main/java/com/aizuda/snailjob/template/datasource/persistence/mapper/RetryTaskLogMapper.java",
+  "right_path": "snail-job-datasource/snail-job-datasource-template/src/main/java/com/aizuda/snailjob/template/datasource/persistence/mapper/RetryTaskMapper.java",
+  "before_name": "selectRetryRetryTaskLogSummaryList",
+  "after_name": "selectRetryRetryTaskLogSummaryList",
+  "before_class": {
+    "name": "RetryTaskLogMapper",
+    "code": "\npublic interface RetryTaskLogMapper extends BaseMapper<RetryTaskLog> {\n\n    int insertBatch(@Param(\"list\") List<RetryTaskLog> list);\n\n    List<DashboardRetryResponseDO> selectRetryRetryTaskLogSummaryList(@Param(\"ew\") Wrapper<RetryTaskLog> wrapper);\n}"
+  },
+  "after_class": {
+    "name": "RetryTaskMapper",
+    "code": "\npublic interface RetryTaskMapper extends BaseMapper<RetryTask> {\n\n    int insertBatch(@Param(\"list\") List<RetryTask> list);\n\n    List<DashboardRetryResponseDO> selectRetryRetryTaskLogSummaryList(@Param(\"ew\") Wrapper<RetryTask> wrapper);\n}"
+  },
+  "before_function": "List<DashboardRetryResponseDO> selectRetryRetryTaskLogSummaryList(@Param(\"ew\") Wrapper<RetryTaskLog> wrapper);",
+  "after_function": "List<DashboardRetryResponseDO> selectRetryRetryTaskLogSummaryList(@Param(\"ew\") Wrapper<RetryTask> wrapper);"
+}

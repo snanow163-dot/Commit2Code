@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/JobSummaryResponseVOConverter.java",
+  "before_name": "toTaskJob",
+  "after_name": "convert",
+  "before_class": {
+    "name": "JobSummaryResponseVOConverter",
+    "code": "public interface JobSummaryResponseVOConverter {\n\n    JobSummaryResponseVOConverter INSTANCE = Mappers.getMapper(JobSummaryResponseVOConverter.class);\n\n    @Mappings({\n            @Mapping(target = \"successRate\", expression = \"java(JobSummaryResponseVOConverter.toSuccessRate(jobTask.getSuccessNum(), jobTask.getTotalNum()))\")\n    })\n    JobTask toTaskJob(DashboardCardResponseDO.JobTask jobTask);\n\n    @Mappings({\n            @Mapping(target = \"successRate\", expression = \"java(JobSummaryResponseVOConverter.toSuccessRate(jobTask.getSuccessNum(), jobTask.getTotalNum()))\")\n    })\n    WorkFlowTask toWorkFlowTask(DashboardCardResponseDO.JobTask jobTask);\n\n    List<Task> toDashboardRetryLineResponseVO(List<DashboardRetryLineResponseDO.Task> taskList);\n\n    static BigDecimal toSuccessRate(Integer successNum, Integer totalNum) {\n        if (Objects.isNull(totalNum) || totalNum == 0) {\n            return null;\n        }\n        return new BigDecimal(String.valueOf(successNum)).divide(new BigDecimal(String.valueOf(totalNum)), 4, RoundingMode.HALF_UP).multiply(new BigDecimal(\"100\"));\n    }\n}"
+  },
+  "after_class": {
+    "name": "JobSummaryResponseVOConverter",
+    "code": "public interface JobSummaryResponseVOConverter {\n\n    JobSummaryResponseVOConverter INSTANCE = Mappers.getMapper(JobSummaryResponseVOConverter.class);\n\n    @Mappings({\n            @Mapping(target = \"successRate\", expression = \"java(JobSummaryResponseVOConverter.toSuccessRate(jobTask.getSuccessNum(), jobTask.getTotalNum()))\")\n    })\n    JobTask convert(DashboardCardResponseDO.JobTask jobTask);\n\n    @Mappings({\n            @Mapping(target = \"successRate\", expression = \"java(JobSummaryResponseVOConverter.toSuccessRate(jobTask.getSuccessNum(), jobTask.getTotalNum()))\")\n    })\n    WorkFlowTask convertToWorkFlowTask(DashboardCardResponseDO.JobTask jobTask);\n\n    List<Task> convertList(List<DashboardRetryLineResponseDO.Task> taskList);\n\n    static BigDecimal toSuccessRate(Integer successNum, Integer totalNum) {\n        if (Objects.isNull(totalNum) || totalNum == 0) {\n            return null;\n        }\n        return new BigDecimal(String.valueOf(successNum)).divide(new BigDecimal(String.valueOf(totalNum)), 4, RoundingMode.HALF_UP).multiply(new BigDecimal(\"100\"));\n    }\n}"
+  },
+  "before_function": "JobTask toTaskJob(DashboardCardResponseDO.JobTask jobTask);",
+  "after_function": "JobTask convert(DashboardCardResponseDO.JobTask jobTask);"
+}

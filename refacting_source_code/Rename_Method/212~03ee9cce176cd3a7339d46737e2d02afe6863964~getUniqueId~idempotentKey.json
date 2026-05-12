@@ -1,0 +1,17 @@
+{
+  "SHA": "03ee9cce176cd3a7339d46737e2d02afe6863964",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/timer/WorkflowTimerTask.java",
+  "before_name": "getUniqueId",
+  "after_name": "idempotentKey",
+  "before_class": {
+    "name": "WorkflowTimerTask",
+    "code": "public class WorkflowTimerTask implements TimerTask<Long> {\n\n    private WorkflowTimerTaskDTO workflowTimerTaskDTO;\n\n    @Override\n    public void run(final Timeout timeout) throws Exception {\n        // 执行任务调度\n        log.debug(\"开始执行任务调度. 当前时间:[{}] taskId:[{}]\", LocalDateTime.now(), workflowTimerTaskDTO.getWorkflowTaskBatchId());\n\n        try {\n\n            WorkflowNodeTaskExecuteDTO taskExecuteDTO = new WorkflowNodeTaskExecuteDTO();\n            taskExecuteDTO.setWorkflowTaskBatchId(workflowTimerTaskDTO.getWorkflowTaskBatchId());\n            taskExecuteDTO.setTaskExecutorScene(workflowTimerTaskDTO.getTaskExecutorScene());\n            taskExecuteDTO.setParentId(SystemConstants.ROOT);\n            ActorRef actorRef = ActorGenerator.workflowTaskExecutorActor();\n            actorRef.tell(taskExecuteDTO, actorRef);\n\n        } catch (Exception e) {\n            log.error(\"任务调度执行失败\", e);\n        }\n    }\n\n    @Override\n    public Long getUniqueId() {\n        return workflowTimerTaskDTO.getWorkflowTaskBatchId();\n    }\n}"
+  },
+  "after_class": {
+    "name": "WorkflowTimerTask",
+    "code": "public class WorkflowTimerTask implements TimerTask<String> {\n    public static final String IDEMPOTENT_KEY_PREFIX = \"workflow_{0}\";\n\n    private WorkflowTimerTaskDTO workflowTimerTaskDTO;\n\n    @Override\n    public void run(final Timeout timeout) throws Exception {\n        // 执行任务调度\n        log.debug(\"开始执行任务调度. 当前时间:[{}] taskId:[{}]\", LocalDateTime.now(), workflowTimerTaskDTO.getWorkflowTaskBatchId());\n\n        try {\n\n            WorkflowNodeTaskExecuteDTO taskExecuteDTO = new WorkflowNodeTaskExecuteDTO();\n            taskExecuteDTO.setWorkflowTaskBatchId(workflowTimerTaskDTO.getWorkflowTaskBatchId());\n            taskExecuteDTO.setTaskExecutorScene(workflowTimerTaskDTO.getTaskExecutorScene());\n            taskExecuteDTO.setParentId(SystemConstants.ROOT);\n            ActorRef actorRef = ActorGenerator.workflowTaskExecutorActor();\n            actorRef.tell(taskExecuteDTO, actorRef);\n\n        } catch (Exception e) {\n            log.error(\"任务调度执行失败\", e);\n        }\n    }\n\n    @Override\n    public String idempotentKey() {\n        return MessageFormat.format(IDEMPOTENT_KEY_PREFIX,  workflowTimerTaskDTO.getWorkflowTaskBatchId());\n    }\n}"
+  },
+  "before_function": "Long getUniqueId() {\n        return workflowTimerTaskDTO.getWorkflowTaskBatchId();\n    }",
+  "after_function": "String idempotentKey() {\n        return MessageFormat.format(IDEMPOTENT_KEY_PREFIX,  workflowTimerTaskDTO.getWorkflowTaskBatchId());\n    }"
+}

@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/SceneConfigResponseVOConverter.java",
+  "before_name": "batchConvert",
+  "after_name": "convertList",
+  "before_class": {
+    "name": "SceneConfigResponseVOConverter",
+    "code": "public interface SceneConfigResponseVOConverter {\n\n    SceneConfigResponseVOConverter INSTANCE = Mappers.getMapper(SceneConfigResponseVOConverter.class);\n\n    SceneConfigResponseVO convert(RetrySceneConfig retrySceneConfig);\n\n    List<SceneConfigResponseVO> batchConvert(List<RetrySceneConfig> retrySceneConfigs);\n}"
+  },
+  "after_class": {
+    "name": "SceneConfigResponseVOConverter",
+    "code": "public interface SceneConfigResponseVOConverter {\n\n    SceneConfigResponseVOConverter INSTANCE = Mappers.getMapper(SceneConfigResponseVOConverter.class);\n\n    SceneConfigResponseVO convert(RetrySceneConfig retrySceneConfig);\n\n    List<SceneConfigResponseVO> convertList(List<RetrySceneConfig> retrySceneConfigs);\n}"
+  },
+  "before_function": "List<SceneConfigResponseVO> batchConvert(List<RetrySceneConfig> retrySceneConfigs);",
+  "after_function": "List<SceneConfigResponseVO> convertList(List<RetrySceneConfig> retrySceneConfigs);"
+}

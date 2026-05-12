@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/TaskContextConverter.java",
+  "before_name": "toTaskContextInfo",
+  "after_name": "convert",
+  "before_class": {
+    "name": "TaskContextConverter",
+    "code": "public interface TaskContextConverter {\n    TaskContextConverter INSTANCE = Mappers.getMapper(TaskContextConverter.class);\n\n    TaskContext.TaskInfo toTaskContextInfo(RetryTaskSaveRequestVO retryTaskSaveRequestVO);\n\n    List<TaskContext.TaskInfo> toTaskContextInfo(List<RetryTaskDTO> retryTasks);\n}"
+  },
+  "after_class": {
+    "name": "TaskContextConverter",
+    "code": "public interface TaskContextConverter {\n    TaskContextConverter INSTANCE = Mappers.getMapper(TaskContextConverter.class);\n\n    TaskContext.TaskInfo convert(RetryTaskSaveRequestVO retryTaskSaveRequestVO);\n\n    List<TaskContext.TaskInfo> convert(List<RetryTaskDTO> retryTasks);\n}"
+  },
+  "before_function": "TaskContext.TaskInfo toTaskContextInfo(RetryTaskSaveRequestVO retryTaskSaveRequestVO);",
+  "after_function": "TaskContext.TaskInfo convert(RetryTaskSaveRequestVO retryTaskSaveRequestVO);"
+}

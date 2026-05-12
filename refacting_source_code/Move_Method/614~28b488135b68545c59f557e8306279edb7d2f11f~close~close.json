@@ -1,0 +1,18 @@
+{
+  "SHA": "28b488135b68545c59f557e8306279edb7d2f11f",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/cache/CacheGroupScanActor.java",
+  "right_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/cache/CacheBucketActor.java",
+  "before_name": "close",
+  "after_name": "close",
+  "before_class": {
+    "name": "CacheGroupScanActor",
+    "code": "public class CacheGroupScanActor implements Lifecycle {\n\n    private static Cache<String, ActorRef> CACHE;\n\n    /**\n     * 获取所有缓存\n     *\n     * @return 缓存对象\n     */\n    public static ActorRef get(String groupName, TaskTypeEnum typeEnum) {\n       return CACHE.getIfPresent(groupName.concat(typeEnum.name()));\n    }\n\n    /**\n     * 获取所有缓存\n     *\n     * @return 缓存对象\n     */\n    public static void put(String groupName, TaskTypeEnum typeEnum, ActorRef actorRef) {\n         CACHE.put(groupName.concat(typeEnum.name()), actorRef);\n    }\n\n    @Override\n    public void start() {\n        LogUtils.info(log, \"CacheGroupScanActor start\");\n        CACHE = CacheBuilder.newBuilder()\n                // 设置并发级别为cpu核心数\n                .concurrencyLevel(Runtime.getRuntime().availableProcessors())\n                .build();\n    }\n\n    @Override\n    public void close() {\n        LogUtils.info(log, \"CacheGroupScanActor stop\");\n        CACHE.invalidateAll();\n    }\n}"
+  },
+  "after_class": {
+    "name": "CacheBucketActor",
+    "code": "public class CacheBucketActor implements Lifecycle {\n\n    private static Cache<Integer, ActorRef> CACHE;\n\n    /**\n     * 获取所有缓存\n     *\n     * @return 缓存对象\n     */\n    public static ActorRef get(Integer bucket) {\n       return CACHE.getIfPresent(bucket);\n    }\n\n    /**\n     * 获取所有缓存\n     *\n     * @return 缓存对象\n     */\n    public static void put(Integer bucket, ActorRef actorRef) {\n         CACHE.put(bucket, actorRef);\n    }\n\n    @Override\n    public void start() {\n        LogUtils.info(log, \"CacheGroupScanActor start\");\n        CACHE = CacheBuilder.newBuilder()\n                // 设置并发级别为cpu核心数\n                .concurrencyLevel(Runtime.getRuntime().availableProcessors())\n                .build();\n    }\n\n    @Override\n    public void close() {\n        LogUtils.info(log, \"CacheGroupScanActor stop\");\n        CACHE.invalidateAll();\n    }\n}"
+  },
+  "before_function": "void close() {\n        LogUtils.info(log, \"CacheGroupScanActor stop\");\n        CACHE.invalidateAll();\n    }",
+  "after_function": "void close() {\n        LogUtils.info(log, \"CacheGroupScanActor stop\");\n        CACHE.invalidateAll();\n    }"
+}

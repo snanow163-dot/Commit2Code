@@ -1,0 +1,17 @@
+{
+  "SHA": "2cd71f6e163ec0375bed36ebd7057f21cbfd7289",
+  "type": "Rename Method",
+  "path": "easy-retry-server/src/main/java/com/aizuda/easy/retry/server/support/dispatch/actor/scan/AbstractScanGroup.java",
+  "before_name": "abstract",
+  "after_name": "abstract",
+  "before_class": {
+    "name": null,
+    "code": null
+  },
+  "after_class": {
+    "name": null,
+    "code": null
+  },
+  "before_function": null,
+  "after_function": null
+}

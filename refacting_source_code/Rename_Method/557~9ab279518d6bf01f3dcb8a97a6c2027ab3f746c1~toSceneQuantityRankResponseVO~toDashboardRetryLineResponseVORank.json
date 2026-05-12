@@ -1,0 +1,17 @@
+{
+  "SHA": "9ab279518d6bf01f3dcb8a97a6c2027ab3f746c1",
+  "type": "Rename Method",
+  "path": "easy-retry-server/easy-retry-server-web/src/main/java/com/aizuda/easy/retry/server/web/service/convert/SceneQuantityRankResponseVOConverter.java",
+  "before_name": "toSceneQuantityRankResponseVO",
+  "after_name": "toDashboardRetryLineResponseVORank",
+  "before_class": {
+    "name": "SceneQuantityRankResponseVOConverter",
+    "code": "public interface SceneQuantityRankResponseVOConverter {\n\n    SceneQuantityRankResponseVOConverter INSTANCE = Mappers.getMapper(SceneQuantityRankResponseVOConverter.class);\n\n    List<SceneQuantityRankResponseVO> toSceneQuantityRankResponseVO(List<SceneQuantityRankResponseDO> dispatchQuantityResponseDOS);\n}"
+  },
+  "after_class": {
+    "name": "SceneQuantityRankResponseVOConverter",
+    "code": "public interface SceneQuantityRankResponseVOConverter {\n\n    SceneQuantityRankResponseVOConverter INSTANCE = Mappers.getMapper(SceneQuantityRankResponseVOConverter.class);\n\n    List<DashboardRetryLineResponseVO.Rank> toDashboardRetryLineResponseVORank(List<DashboardRetryLineResponseDO.Rank> rankList);\n}"
+  },
+  "before_function": "List<SceneQuantityRankResponseVO> toSceneQuantityRankResponseVO(List<SceneQuantityRankResponseDO> dispatchQuantityResponseDOS);",
+  "after_function": "List<DashboardRetryLineResponseVO.Rank> toDashboardRetryLineResponseVORank(List<DashboardRetryLineResponseDO.Rank> rankList);"
+}

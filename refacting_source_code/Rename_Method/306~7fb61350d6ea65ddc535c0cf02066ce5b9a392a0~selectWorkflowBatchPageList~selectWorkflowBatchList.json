@@ -1,0 +1,17 @@
+{
+  "SHA": "7fb61350d6ea65ddc535c0cf02066ce5b9a392a0",
+  "type": "Rename Method",
+  "path": "snail-job-datasource/snail-job-datasource-template/src/main/java/com/aizuda/snailjob/template/datasource/persistence/mapper/WorkflowTaskBatchMapper.java",
+  "before_name": "selectWorkflowBatchPageList",
+  "after_name": "selectWorkflowBatchList",
+  "before_class": {
+    "name": "WorkflowTaskBatchMapper",
+    "code": "public interface WorkflowTaskBatchMapper extends BaseMapper<WorkflowTaskBatch> {\n\n    List<WorkflowBatchResponseDO> selectWorkflowBatchPageList(PageDTO<JobTaskBatch> pageDTO, @Param(\"ew\") Wrapper<WorkflowTaskBatch> wrapper);\n\n    List<WorkflowBatchResponseDO> selectWorkflowBatchPageList(@Param(\"ew\") Wrapper<WorkflowTaskBatch> wrapper);\n}"
+  },
+  "after_class": {
+    "name": "WorkflowTaskBatchMapper",
+    "code": "public interface WorkflowTaskBatchMapper extends BaseMapper<WorkflowTaskBatch> {\n\n    List<WorkflowBatchResponseDO> selectWorkflowBatchPageList(PageDTO<JobTaskBatch> pageDTO, @Param(\"ew\") Wrapper<WorkflowTaskBatch> wrapper);\n\n    List<WorkflowBatchResponseDO> selectWorkflowBatchList(@Param(\"ew\") Wrapper<WorkflowTaskBatch> wrapper);\n}"
+  },
+  "before_function": "List<WorkflowBatchResponseDO> selectWorkflowBatchPageList(PageDTO<JobTaskBatch> pageDTO, @Param(\"ew\") Wrapper<WorkflowTaskBatch> wrapper);",
+  "after_function": "List<WorkflowBatchResponseDO> selectWorkflowBatchList(@Param(\"ew\") Wrapper<WorkflowTaskBatch> wrapper);"
+}

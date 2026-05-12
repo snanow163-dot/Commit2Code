@@ -1,0 +1,17 @@
+{
+  "SHA": "9cf223278a8e3eacbd10dd7075cc49a889694704",
+  "type": "Rename Method",
+  "path": "easy-retry-datasource/easy-retry-datasource-template/src/main/java/com/aizuda/easy/retry/template/datasource/persistence/mapper/ServerNodeMapper.java",
+  "before_name": "insertOrUpdate",
+  "after_name": "batchInsert",
+  "before_class": {
+    "name": "ServerNodeMapper",
+    "code": "public interface ServerNodeMapper extends BaseMapper<ServerNode> {\n\n    int insertOrUpdate(@Param(\"records\") List<ServerNode> records);\n\n    List<ActivePodQuantityResponseDO> countActivePod(@Param(\"ew\") Wrapper<ServerNode> wrapper);\n\n}"
+  },
+  "after_class": {
+    "name": "ServerNodeMapper",
+    "code": "public interface ServerNodeMapper extends BaseMapper<ServerNode> {\n\n//    int insertOrUpdate(@Param(\"records\") List<ServerNode> records);\n\n    int batchUpdateExpireAt(@Param(\"list\") List<ServerNode> list);\n\n    int batchInsert(@Param(\"records\") List<ServerNode> records);\n\n    List<ActivePodQuantityResponseDO> countActivePod(@Param(\"ew\") Wrapper<ServerNode> wrapper);\n\n}"
+  },
+  "before_function": "int insertOrUpdate(@Param(\"records\") List<ServerNode> records);",
+  "after_function": "int batchInsert(@Param(\"records\") List<ServerNode> records);"
+}

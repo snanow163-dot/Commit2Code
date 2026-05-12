@@ -1,0 +1,17 @@
+{
+  "SHA": "d252e46d76dc829cc9e87d1b0751d59aa832aed4",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/controller/RetryTaskController.java",
+  "before_name": "getRetryTaskLogPage",
+  "after_name": "getRetryTaskPage",
+  "before_class": {
+    "name": "RetryTaskController",
+    "code": "public class RetryTaskController {\n\n    @Autowired\n    private RetryTaskLogService retryTaskLogService;\n\n    @LoginRequired\n    @GetMapping(\"list\")\n    public PageResult<List<RetryTaskLogResponseVO>> getRetryTaskLogPage(RetryTaskQueryVO queryVO) {\n        return retryTaskLogService.getRetryTaskLogPage(queryVO);\n    }\n\n    @LoginRequired\n    @GetMapping(\"/message/list\")\n    public RetryTaskLogMessageResponseVO getRetryTaskLogPage(RetryTaskLogMessageQueryVO queryVO) {\n        return retryTaskLogService.getRetryTaskLogMessagePage(queryVO);\n    }\n\n    @LoginRequired\n    @GetMapping(\"{id}\")\n    public RetryTaskLogResponseVO getRetryTaskLogById(@PathVariable(\"id\") Long id) {\n        return retryTaskLogService.getRetryTaskLogById(id);\n    }\n\n    @LoginRequired\n    @DeleteMapping(\"{id}\")\n    public Boolean deleteById(@PathVariable(\"id\") Long id) {\n        return retryTaskLogService.deleteById(id);\n    }\n\n    @LoginRequired\n    @DeleteMapping(\"ids\")\n    public Boolean batchDelete(@RequestBody @NotEmpty(message = \"ids不能为空\") Set<Long> ids) {\n        return retryTaskLogService.batchDelete(ids);\n    }\n}"
+  },
+  "after_class": {
+    "name": "RetryTaskController",
+    "code": "public class RetryTaskController {\n\n    @Autowired\n    private RetryTaskService retryTaskService;\n\n    @LoginRequired\n    @GetMapping(\"list\")\n    public PageResult<List<RetryTaskResponseVO>> getRetryTaskPage(RetryTaskQueryVO queryVO) {\n        return retryTaskService.getRetryTaskLogPage(queryVO);\n    }\n\n    @LoginRequired\n    @GetMapping(\"/message/list\")\n    public RetryTaskLogMessageResponseVO getRetryTaskLogMessagePage(RetryTaskLogMessageQueryVO queryVO) {\n        return retryTaskService.getRetryTaskLogMessagePage(queryVO);\n    }\n\n    @LoginRequired\n    @GetMapping(\"{id}\")\n    public RetryTaskResponseVO getRetryTaskById(@PathVariable(\"id\") Long id) {\n        return retryTaskService.getRetryTaskById(id);\n    }\n\n    @LoginRequired\n    @PostMapping(\"/stop/{id}\")\n    public Boolean stopById(@PathVariable(\"id\") Long id) {\n        return retryTaskService.stopById(id);\n    }\n\n    @LoginRequired\n    @DeleteMapping(\"{id}\")\n    public Boolean deleteById(@PathVariable(\"id\") Long id) {\n        return retryTaskService.deleteById(id);\n    }\n\n    @LoginRequired\n    @DeleteMapping(\"ids\")\n    public Boolean batchDelete(@RequestBody @NotEmpty(message = \"ids不能为空\") Set<Long> ids) {\n        return retryTaskService.batchDelete(ids);\n    }\n\n\n}"
+  },
+  "before_function": "PageResult<List<RetryTaskLogResponseVO>> getRetryTaskLogPage(RetryTaskQueryVO queryVO) {\n        return retryTaskLogService.getRetryTaskLogPage(queryVO);\n    }",
+  "after_function": "PageResult<List<RetryTaskResponseVO>> getRetryTaskPage(RetryTaskQueryVO queryVO) {\n        return retryTaskService.getRetryTaskLogPage(queryVO);\n    }"
+}

@@ -1,0 +1,17 @@
+{
+  "SHA": "33fef492e2a6a8c275e03efcb17b763183343b99",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/alarm/listener/JobTaskFailAlarmListener.java",
+  "before_name": "onApplicationEvent",
+  "after_name": "doOnApplicationEvent",
+  "before_class": {
+    "name": null,
+    "code": null
+  },
+  "after_class": {
+    "name": null,
+    "code": null
+  },
+  "before_function": "    public void onApplicationEvent(JobTaskFailAlarmEvent event) {\n        if (!queue.offer(event.getJobTaskBatchId())) {\n            SnailJobLog.LOCAL.warn(\"JOB任务执行失败告警队列已满\");\n        }\n    }",
+  "after_function": "    public void doOnApplicationEvent(JobTaskFailAlarmEvent event) {\n        if (!queue.offer(event.getJobTaskBatchId())) {\n            SnailJobLog.LOCAL.warn(\"JOB任务执行失败告警队列已满\");\n        }\n    }"
+}

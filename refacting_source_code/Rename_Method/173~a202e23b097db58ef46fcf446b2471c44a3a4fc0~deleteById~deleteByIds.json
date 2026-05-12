@@ -1,0 +1,17 @@
+{
+  "SHA": "a202e23b097db58ef46fcf446b2471c44a3a4fc0",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/WorkflowService.java",
+  "before_name": "deleteById",
+  "after_name": "deleteByIds",
+  "before_class": {
+    "name": "WorkflowService",
+    "code": "public interface WorkflowService {\n\n    boolean saveWorkflow(WorkflowRequestVO workflowRequestVO);\n\n    WorkflowDetailResponseVO getWorkflowDetail(Long id) throws IOException;\n\n    PageResult<List<WorkflowResponseVO>> listPage(WorkflowQueryVO queryVO);\n\n    Boolean updateWorkflow(WorkflowRequestVO workflowRequestVO);\n\n    Boolean updateStatus(Long id);\n\n    Boolean deleteById(Long id);\n\n    Boolean trigger(Long id);\n\n    List<WorkflowResponseVO> getWorkflowNameList(String keywords, Long workflowId, String groupName);\n\n    Pair<Integer, String> checkNodeExpression(CheckDecisionVO decisionVO);\n\n    void importWorkflowTask(@Valid @NotEmpty(message = \"导入数据不能为空\") List<WorkflowRequestVO> requests);\n\n    String exportWorkflowTask(ExportWorkflowVO exportWorkflowVO\n    );\n}"
+  },
+  "after_class": {
+    "name": "WorkflowService",
+    "code": "public interface WorkflowService {\n\n    boolean saveWorkflow(WorkflowRequestVO workflowRequestVO);\n\n    WorkflowDetailResponseVO getWorkflowDetail(Long id) throws IOException;\n\n    PageResult<List<WorkflowResponseVO>> listPage(WorkflowQueryVO queryVO);\n\n    Boolean updateWorkflow(WorkflowRequestVO workflowRequestVO);\n\n    Boolean updateStatus(Long id);\n\n    Boolean trigger(Long id);\n\n    List<WorkflowResponseVO> getWorkflowNameList(String keywords, Long workflowId, String groupName);\n\n    Pair<Integer, String> checkNodeExpression(CheckDecisionVO decisionVO);\n\n    void importWorkflowTask(@Valid @NotEmpty(message = \"导入数据不能为空\") List<WorkflowRequestVO> requests);\n\n    String exportWorkflowTask(ExportWorkflowVO exportWorkflowVO\n    );\n\n    Boolean deleteByIds(Set<Long> ids);\n}"
+  },
+  "before_function": "Boolean deleteById(Long id);",
+  "after_function": "Boolean deleteByIds(Set<Long> ids);"
+}

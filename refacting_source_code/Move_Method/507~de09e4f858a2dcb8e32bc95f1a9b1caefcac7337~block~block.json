@@ -1,0 +1,18 @@
+{
+  "SHA": "de09e4f858a2dcb8e32bc95f1a9b1caefcac7337",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/easy-retry-server-job-task/src/main/java/com/aizuda/easy/retry/server/job/task/support/block/job/BlockStrategies.java",
+  "right_path": "easy-retry-server/easy-retry-server-job-task/src/main/java/com/aizuda/easy/retry/server/job/task/support/block/job/AbstracJobBlockStrategy.java",
+  "before_name": "block",
+  "after_name": "block",
+  "before_class": {
+    "name": null,
+    "code": null
+  },
+  "after_class": {
+    "name": "AbstracJobBlockStrategy",
+    "code": "public abstract class AbstracJobBlockStrategy implements BlockStrategy , InitializingBean {\n\n    @Override\n    public void block(final BlockStrategyContext context) {\n        doBlock(context);\n    }\n\n    protected abstract void doBlock(final BlockStrategyContext context);\n\n\n    protected abstract BlockStrategyEnum blockStrategyEnum();\n\n    @Override\n    public void afterPropertiesSet() throws Exception {\n        JobBlockStrategyFactory.registerBlockStrategy(blockStrategyEnum(), this);\n    }\n}"
+  },
+  "before_function": "void block(final BlockStrategyContext context) {\n            log.warn(\"阻塞策略为丢弃此次执行. taskBatchId:[{}]\", context.getTaskBatchId());\n\n            // 重新生成任务\n            JobTaskBatchGenerator jobTaskBatchGenerator = SpringContext.getBeanByType(JobTaskBatchGenerator.class);\n            JobTaskBatchGeneratorContext jobTaskBatchGeneratorContext = JobTaskConverter.INSTANCE.toJobTaskGeneratorContext(context);\n            jobTaskBatchGeneratorContext.setTaskBatchStatus(JobTaskBatchStatusEnum.CANCEL.getStatus());\n            jobTaskBatchGeneratorContext.setOperationReason(JobOperationReasonEnum.JOB_DISCARD.getReason());\n            jobTaskBatchGenerator.generateJobTaskBatch(jobTaskBatchGeneratorContext);\n        }",
+  "after_function": "void block(final BlockStrategyContext context) {\n        doBlock(context);\n    }"
+}

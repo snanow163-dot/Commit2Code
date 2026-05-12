@@ -1,0 +1,17 @@
+{
+  "SHA": "cc95bb43bb104011f7087c1c0b0a5cd8d7d0182a",
+  "type": "Rename Method",
+  "path": "snail-job-datasource/snail-job-datasource-template/src/main/java/com/aizuda/snailjob/template/datasource/persistence/mapper/RetryTaskMapper.java",
+  "before_name": "updateBatchNextTriggerAtById",
+  "after_name": "selectRetryRetryTaskLogSummaryList",
+  "before_class": {
+    "name": "RetryTaskMapper",
+    "code": "\npublic interface RetryTaskMapper extends BaseMapper<RetryTask> {\n\n    int insertBatch(@Param(\"list\") List<RetryTask> list);\n\n    int updateBatchNextTriggerAtById(@Param(\"partition\") Integer partition, @Param(\"list\") List<RetryTask> list);\n\n}"
+  },
+  "after_class": {
+    "name": "RetryTaskMapper",
+    "code": "\npublic interface RetryTaskMapper extends BaseMapper<RetryTask> {\n\n    int insertBatch(@Param(\"list\") List<RetryTask> list);\n\n    List<DashboardRetryResponseDO> selectRetryRetryTaskLogSummaryList(@Param(\"ew\") Wrapper<RetryTask> wrapper);\n}"
+  },
+  "before_function": "int updateBatchNextTriggerAtById(@Param(\"partition\") Integer partition, @Param(\"list\") List<RetryTask> list);",
+  "after_function": "List<DashboardRetryResponseDO> selectRetryRetryTaskLogSummaryList(@Param(\"ew\") Wrapper<RetryTask> wrapper);"
+}

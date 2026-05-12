@@ -1,0 +1,17 @@
+{
+  "SHA": "69ef41cbaf37f46467ad7130c1b4427edacad151",
+  "type": "Rename Method",
+  "path": "x-retry-server/src/main/java/com/x/retry/server/persistence/mybatis/mapper/RetryTaskMapper.java",
+  "before_name": "countAllRetryTask",
+  "after_name": "countAllRetryTaskByRetryStatus",
+  "before_class": {
+    "name": "RetryTaskMapper",
+    "code": "\npublic interface RetryTaskMapper extends BaseMapper<RetryTask> {\n\n    int deleteBatch(@Param(\"ids\") List<Long> ids, @Param(\"partition\") Integer partition);\n\n    int countAllRetryTask(@Param(\"partition\") Integer partition);\n\n}"
+  },
+  "after_class": {
+    "name": "RetryTaskMapper",
+    "code": "\npublic interface RetryTaskMapper extends BaseMapper<RetryTask> {\n\n    int deleteBatch(@Param(\"ids\") List<Long> ids, @Param(\"partition\") Integer partition);\n\n    int countAllRetryTaskByRetryStatus(@Param(\"partition\") Integer partition,\n                                       @Param(\"retryStatus\") Integer retryStatus);\n\n}"
+  },
+  "before_function": "int countAllRetryTask(@Param(\"partition\") Integer partition);",
+  "after_function": "int countAllRetryTaskByRetryStatus(@Param(\"partition\") Integer partition,\n                                       @Param(\"retryStatus\") Integer retryStatus);"
+}

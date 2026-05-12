@@ -1,0 +1,17 @@
+{
+  "SHA": "06c5c25a71959f8ee16540cf4e22314312a4e801",
+  "type": "Rename Method",
+  "path": "snail-job-client/snail-job-client-retry-core/src/main/java/com/aizuda/snailjob/client/core/RetryArgSerializer.java",
+  "before_name": "type",
+  "after_name": "name",
+  "before_class": {
+    "name": "RetryArgSerializer",
+    "code": "public interface RetryArgSerializer {\n\n    SerializerType type();\n\n    String serialize(Object serializeInfo);\n\n    Object deSerialize(String infoStr, Class tClass, Method method) throws JsonProcessingException;\n}"
+  },
+  "after_class": {
+    "name": "RetryArgSerializer",
+    "code": "public interface RetryArgSerializer {\n\n    String name();\n\n    String serialize(Object serializeInfo);\n\n    Object deSerialize(String infoStr, Class tClass, Method method) throws JsonProcessingException;\n}"
+  },
+  "before_function": "SerializerType type();",
+  "after_function": "String name();"
+}

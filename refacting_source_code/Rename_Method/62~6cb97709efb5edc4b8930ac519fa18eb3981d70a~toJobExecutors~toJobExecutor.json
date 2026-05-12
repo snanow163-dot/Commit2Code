@@ -1,0 +1,17 @@
+{
+  "SHA": "6cb97709efb5edc4b8930ac519fa18eb3981d70a",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/convert/JobExecutorConverter.java",
+  "before_name": "toJobExecutors",
+  "after_name": "toJobExecutor",
+  "before_class": {
+    "name": "JobExecutorConverter",
+    "code": "public interface JobExecutorConverter {\n\n    JobExecutorConverter INSTANCE = Mappers.getMapper(JobExecutorConverter.class);\n\n\n    List<JobExecutors> toJobExecutors(List<JobExecutorDTO>  jobExecutorDTOS);\n\n}"
+  },
+  "after_class": {
+    "name": "JobExecutorConverter",
+    "code": "public interface JobExecutorConverter {\n\n    JobExecutorConverter INSTANCE = Mappers.getMapper(JobExecutorConverter.class);\n\n\n    List<JobExecutor> toJobExecutor(List<JobExecutorDTO>  jobExecutorDTOS);\n\n}"
+  },
+  "before_function": "List<JobExecutors> toJobExecutors(List<JobExecutorDTO>  jobExecutorDTOS);",
+  "after_function": "List<JobExecutor> toJobExecutor(List<JobExecutorDTO>  jobExecutorDTOS);"
+}

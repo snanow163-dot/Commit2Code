@@ -1,0 +1,17 @@
+{
+  "SHA": "afc10140cc03ffe7728523cc26e66a49ac0dd97c",
+  "type": "Rename Method",
+  "path": "easy-retry-server/src/main/java/com/aizuda/easy/retry/server/web/controller/RetryDeadLetterController.java",
+  "before_name": "deleteById",
+  "after_name": "batchDelete",
+  "before_class": {
+    "name": "RetryDeadLetterController",
+    "code": "public class RetryDeadLetterController {\n\n    @Autowired\n    private RetryDeadLetterService retryDeadLetterService;\n\n    @LoginRequired\n    @GetMapping(\"list\")\n    public PageResult<List<RetryDeadLetterResponseVO>> getRetryDeadLetterPage(RetryDeadLetterQueryVO queryVO) {\n        return retryDeadLetterService.getRetryDeadLetterPage(queryVO);\n    }\n\n    @LoginRequired\n    @GetMapping(\"{id}\")\n    public RetryDeadLetterResponseVO getRetryDeadLetterById(@RequestParam(\"groupName\") String groupName,\n                                                            @PathVariable(\"id\") Long id) {\n        return retryDeadLetterService.getRetryDeadLetterById(groupName, id);\n    }\n\n    @LoginRequired\n    @GetMapping(\"/batch/rollback\")\n    public boolean rollback(@RequestBody @Validated BatchRollBackRetryDeadLetterVO rollBackRetryDeadLetterVO) {\n        return retryDeadLetterService.rollback(rollBackRetryDeadLetterVO);\n    }\n\n    @LoginRequired\n    @DeleteMapping(\"/batch\")\n    public boolean deleteById(@RequestBody @Validated BatchDeleteRetryDeadLetterVO deadLetterVO) {\n        return retryDeadLetterService.batchDelete(deadLetterVO);\n    }\n}"
+  },
+  "after_class": {
+    "name": "RetryDeadLetterController",
+    "code": "public class RetryDeadLetterController {\n\n    @Autowired\n    private RetryDeadLetterService retryDeadLetterService;\n\n    @LoginRequired\n    @GetMapping(\"list\")\n    public PageResult<List<RetryDeadLetterResponseVO>> getRetryDeadLetterPage(RetryDeadLetterQueryVO queryVO) {\n        return retryDeadLetterService.getRetryDeadLetterPage(queryVO);\n    }\n\n    @LoginRequired\n    @GetMapping(\"{id}\")\n    public RetryDeadLetterResponseVO getRetryDeadLetterById(@RequestParam(\"groupName\") String groupName,\n                                                            @PathVariable(\"id\") Long id) {\n        return retryDeadLetterService.getRetryDeadLetterById(groupName, id);\n    }\n\n    @LoginRequired\n    @PostMapping(\"/batch/rollback\")\n    public int rollback(@RequestBody @Validated BatchRollBackRetryDeadLetterVO rollBackRetryDeadLetterVO) {\n        return retryDeadLetterService.rollback(rollBackRetryDeadLetterVO);\n    }\n\n    @LoginRequired\n    @DeleteMapping(\"/batch\")\n    public int batchDelete(@RequestBody @Validated BatchDeleteRetryDeadLetterVO deadLetterVO) {\n        return retryDeadLetterService.batchDelete(deadLetterVO);\n    }\n}"
+  },
+  "before_function": "boolean deleteById(@RequestBody @Validated BatchDeleteRetryDeadLetterVO deadLetterVO) {\n        return retryDeadLetterService.batchDelete(deadLetterVO);\n    }",
+  "after_function": "int batchDelete(@RequestBody @Validated BatchDeleteRetryDeadLetterVO deadLetterVO) {\n        return retryDeadLetterService.batchDelete(deadLetterVO);\n    }"
+}

@@ -1,0 +1,17 @@
+{
+  "SHA": "a202e23b097db58ef46fcf446b2471c44a3a4fc0",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/controller/JobBatchController.java",
+  "before_name": "deleteJobBatchById",
+  "after_name": "deleteJobBatchByIds",
+  "before_class": {
+    "name": "JobBatchController",
+    "code": "public class JobBatchController {\n    private final JobBatchService jobBatchService;\n\n    @GetMapping(\"/list\")\n    @LoginRequired\n    public PageResult<List<JobBatchResponseVO>> getJobBatchPage(JobBatchQueryVO jobQueryVO) {\n        return jobBatchService.getJobBatchPage(jobQueryVO);\n    }\n\n    @GetMapping(\"{id}\")\n    @LoginRequired\n    public JobBatchResponseVO getJobBatchDetail(@PathVariable(\"id\") Long id) {\n        return jobBatchService.getJobBatchDetail(id);\n    }\n\n    @PostMapping(\"/stop/{taskBatchId}\")\n    @LoginRequired\n    public Boolean stop(@PathVariable(\"taskBatchId\") Long taskBatchId) {\n        return jobBatchService.stop(taskBatchId);\n    }\n\n\n    @PostMapping(\"/retry/{taskBatchId}\")\n    @LoginRequired\n    public Boolean retry(@PathVariable(\"taskBatchId\") Long taskBatchId) {\n        return jobBatchService.retry(taskBatchId);\n    }\n\n    @DeleteMapping(\"/ids\")\n    @LoginRequired\n    public Boolean deleteJobBatchById(@RequestBody @Valid @NotEmpty(message = \"ids不能为空\") Set<Long> ids) {\n        return jobBatchService.deleteJobBatchById(ids);\n    }\n}"
+  },
+  "after_class": {
+    "name": "JobBatchController",
+    "code": "public class JobBatchController {\n    private final JobBatchService jobBatchService;\n\n    @GetMapping(\"/list\")\n    @LoginRequired\n    public PageResult<List<JobBatchResponseVO>> getJobBatchPage(JobBatchQueryVO jobQueryVO) {\n        return jobBatchService.getJobBatchPage(jobQueryVO);\n    }\n\n    @GetMapping(\"{id}\")\n    @LoginRequired\n    public JobBatchResponseVO getJobBatchDetail(@PathVariable(\"id\") Long id) {\n        return jobBatchService.getJobBatchDetail(id);\n    }\n\n    @PostMapping(\"/stop/{taskBatchId}\")\n    @LoginRequired\n    public Boolean stop(@PathVariable(\"taskBatchId\") Long taskBatchId) {\n        return jobBatchService.stop(taskBatchId);\n    }\n\n\n    @PostMapping(\"/retry/{taskBatchId}\")\n    @LoginRequired\n    public Boolean retry(@PathVariable(\"taskBatchId\") Long taskBatchId) {\n        return jobBatchService.retry(taskBatchId);\n    }\n\n    @DeleteMapping(\"/ids\")\n    @LoginRequired\n    public Boolean deleteJobBatchByIds(@RequestBody @Valid\n                                          @NotEmpty(message = \"ids不能为空\")\n                                          @Size(max = 100, message = \"最多删除5个\")\n                                          Set<Long> ids) {\n        return jobBatchService.deleteJobBatchByIds(ids);\n    }\n}"
+  },
+  "before_function": "Boolean deleteJobBatchById(@RequestBody @Valid @NotEmpty(message = \"ids不能为空\") Set<Long> ids) {\n        return jobBatchService.deleteJobBatchById(ids);\n    }",
+  "after_function": "Boolean deleteJobBatchByIds(@RequestBody @Valid\n                                          @NotEmpty(message = \"ids不能为空\")\n                                          @Size(max = 100, message = \"最多删除5个\")\n                                          Set<Long> ids) {\n        return jobBatchService.deleteJobBatchByIds(ids);\n    }"
+}

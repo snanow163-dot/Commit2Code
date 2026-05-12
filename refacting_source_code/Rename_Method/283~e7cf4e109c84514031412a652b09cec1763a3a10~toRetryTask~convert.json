@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/RetrySummaryResponseVOConverter.java",
+  "before_name": "toRetryTask",
+  "after_name": "convert",
+  "before_class": {
+    "name": "RetrySummaryResponseVOConverter",
+    "code": "public interface RetrySummaryResponseVOConverter {\n\n    RetrySummaryResponseVOConverter INSTANCE = Mappers.getMapper(RetrySummaryResponseVOConverter.class);\n\n    RetryTask toRetryTask(DashboardCardResponseDO.RetryTask retryTask);\n}"
+  },
+  "after_class": {
+    "name": "RetrySummaryResponseVOConverter",
+    "code": "public interface RetrySummaryResponseVOConverter {\n\n    RetrySummaryResponseVOConverter INSTANCE = Mappers.getMapper(RetrySummaryResponseVOConverter.class);\n\n    RetryTask convert(DashboardCardResponseDO.RetryTask retryTask);\n}"
+  },
+  "before_function": "RetryTask toRetryTask(DashboardCardResponseDO.RetryTask retryTask);",
+  "after_function": "RetryTask convert(DashboardCardResponseDO.RetryTask retryTask);"
+}

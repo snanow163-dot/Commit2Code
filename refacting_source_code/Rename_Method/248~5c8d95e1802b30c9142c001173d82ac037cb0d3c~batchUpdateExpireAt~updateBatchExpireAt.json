@@ -1,0 +1,17 @@
+{
+  "SHA": "5c8d95e1802b30c9142c001173d82ac037cb0d3c",
+  "type": "Rename Method",
+  "path": "snail-job-datasource/snail-job-datasource-template/src/main/java/com/aizuda/snailjob/template/datasource/persistence/mapper/ServerNodeMapper.java",
+  "before_name": "batchUpdateExpireAt",
+  "after_name": "updateBatchExpireAt",
+  "before_class": {
+    "name": "ServerNodeMapper",
+    "code": "public interface ServerNodeMapper extends BaseMapper<ServerNode> {\n\n    int batchUpdateExpireAt(@Param(\"list\") List<ServerNode> list);\n\n    int batchInsert(@Param(\"records\") List<ServerNode> records);\n\n    List<ActivePodQuantityResponseDO> countActivePod(@Param(\"ew\") Wrapper<ServerNode> wrapper);\n\n}"
+  },
+  "after_class": {
+    "name": "ServerNodeMapper",
+    "code": "public interface ServerNodeMapper extends BaseMapper<ServerNode> {\n\n    int updateBatchExpireAt(@Param(\"list\") List<ServerNode> list);\n\n    int insertBatch(@Param(\"records\") List<ServerNode> records);\n\n    List<ActivePodQuantityResponseDO> selectActivePodCount(@Param(\"ew\") Wrapper<ServerNode> wrapper);\n\n}"
+  },
+  "before_function": "int batchUpdateExpireAt(@Param(\"list\") List<ServerNode> list);",
+  "after_function": "int updateBatchExpireAt(@Param(\"list\") List<ServerNode> list);"
+}

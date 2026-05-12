@@ -1,0 +1,17 @@
+{
+  "SHA": "27c927c845490be53090d477760276a87a886216",
+  "type": "Rename Method",
+  "path": "example/src/main/java/com/example/controller/TeacherController.java",
+  "before_name": "getTeacher",
+  "after_name": "testDDL",
+  "before_class": {
+    "name": "TeacherController",
+    "code": "public class TeacherController {\n\n    @Autowired\n    private RestTemplate restTemplate;\n\n    @GetMapping\n//    @Retryable(scene = \"testStatusCode\")\n    public Result getTeacher() {\n        Result result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n\n        if (result.getStatus() == 0) {\n            throw new UnsupportedOperationException(result.getMessage());\n        }\n        return result;\n    }\n}"
+  },
+  "after_class": {
+    "name": "TeacherController",
+    "code": "public class TeacherController {\n\n    @Autowired\n    private RestTemplate restTemplate;\n\n    @GetMapping(\"test-ddl\")\n    public Result testDDL() {\n        Result result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n\n        if (result.getStatus() == 0) {\n            throw new UnsupportedOperationException(result.getMessage());\n        }\n        return result;\n    }\n\n    @GetMapping(\"test-status-code\")\n    @Retryable(scene = \"testStatusCode\")\n    public Result testStatusCode() {\n        Result result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n\n        if (result.getStatus() == 0) {\n            throw new UnsupportedOperationException(result.getMessage());\n        }\n        return result;\n    }\n}"
+  },
+  "before_function": "Result getTeacher() {\n        Result result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n\n        if (result.getStatus() == 0) {\n            throw new UnsupportedOperationException(result.getMessage());\n        }\n        return result;\n    }",
+  "after_function": "Result testDDL() {\n        Result result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n        result = restTemplate.getForObject(\"http://127.0.0.1:8088/school/id\", Result.class);\n\n        if (result.getStatus() == 0) {\n            throw new UnsupportedOperationException(result.getMessage());\n        }\n        return result;\n    }"
+}

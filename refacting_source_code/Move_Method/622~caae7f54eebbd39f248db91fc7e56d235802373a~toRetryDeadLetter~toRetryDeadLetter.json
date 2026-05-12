@@ -1,0 +1,18 @@
+{
+  "SHA": "caae7f54eebbd39f248db91fc7e56d235802373a",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/src/main/java/com/aizuda/easy/retry/server/service/convert/RetryDeadLetterConverter.java",
+  "right_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/service/RetryDeadLetterConverter.java",
+  "before_name": "toRetryDeadLetter",
+  "after_name": "toRetryDeadLetter",
+  "before_class": {
+    "name": "RetryDeadLetterConverter",
+    "code": "public interface RetryDeadLetterConverter {\n\n    RetryDeadLetterConverter INSTANCE = Mappers.getMapper(RetryDeadLetterConverter.class);\n\n    @Named(\"ignoreId\")\n    @Mappings({\n            @Mapping(target = \"id\", ignore = true),\n            @Mapping(target = \"createDt\", ignore = true)\n    })\n    RetryDeadLetter toRetryDeadLetter(RetryTask retryTasks);\n\n    @IterableMapping(qualifiedByName = \"ignoreId\")\n    List<RetryDeadLetter> toRetryDeadLetter(List<RetryTask> retryTasks);\n\n}"
+  },
+  "after_class": {
+    "name": "RetryDeadLetterConverter",
+    "code": "public interface RetryDeadLetterConverter {\n\n    RetryDeadLetterConverter INSTANCE = Mappers.getMapper(RetryDeadLetterConverter.class);\n\n    @Named(\"ignoreId\")\n    @Mappings({\n            @Mapping(target = \"id\", ignore = true),\n            @Mapping(target = \"createDt\", ignore = true)\n    })\n    RetryDeadLetter toRetryDeadLetter(RetryTask retryTasks);\n\n    @IterableMapping(qualifiedByName = \"ignoreId\")\n    List<RetryDeadLetter> toRetryDeadLetter(List<RetryTask> retryTasks);\n\n}"
+  },
+  "before_function": "RetryDeadLetter toRetryDeadLetter(RetryTask retryTasks);",
+  "after_function": "RetryDeadLetter toRetryDeadLetter(RetryTask retryTasks);"
+}

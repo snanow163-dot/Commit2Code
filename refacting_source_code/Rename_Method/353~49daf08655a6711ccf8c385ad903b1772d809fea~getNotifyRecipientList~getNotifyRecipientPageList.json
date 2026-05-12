@@ -1,0 +1,17 @@
+{
+  "SHA": "49daf08655a6711ccf8c385ad903b1772d809fea",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/NotifyRecipientService.java",
+  "before_name": "getNotifyRecipientList",
+  "after_name": "getNotifyRecipientPageList",
+  "before_class": {
+    "name": "NotifyRecipientService",
+    "code": "public interface NotifyRecipientService {\n\n    PageResult<List<NotifyRecipientResponseVO>> getNotifyRecipientList(NotifyRecipientQueryVO queryVO);\n\n    Boolean saveNotifyRecipient(NotifyRecipientRequestVO requestVO);\n\n    Boolean updateNotifyRecipient(NotifyRecipientRequestVO requestVO);\n\n}"
+  },
+  "after_class": {
+    "name": "NotifyRecipientService",
+    "code": "public interface NotifyRecipientService {\n\n    PageResult<List<NotifyRecipientResponseVO>> getNotifyRecipientPageList(NotifyRecipientQueryVO queryVO);\n\n    Boolean saveNotifyRecipient(NotifyRecipientRequestVO requestVO);\n\n    Boolean updateNotifyRecipient(NotifyRecipientRequestVO requestVO);\n\n    List<CommonLabelValueResponseVO> getNotifyRecipientList();\n\n}"
+  },
+  "before_function": "PageResult<List<NotifyRecipientResponseVO>> getNotifyRecipientList(NotifyRecipientQueryVO queryVO);",
+  "after_function": "PageResult<List<NotifyRecipientResponseVO>> getNotifyRecipientPageList(NotifyRecipientQueryVO queryVO);"
+}

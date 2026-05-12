@@ -1,0 +1,17 @@
+{
+  "SHA": "071335aa8e150d54ba3c0993d0a69d28f7ec01b8",
+  "type": "Rename Method",
+  "path": "easy-retry-client/easy-retry-client-job-core/src/main/java/com/aizuda/easy/retry/client/job/core/IJobExecutor.java",
+  "before_name": "getName",
+  "after_name": "jobExecute",
+  "before_class": {
+    "name": "IJobExecutor",
+    "code": "public interface IJobExecutor extends Callable<ExecuteResult> {\n\n    String getName();\n}"
+  },
+  "after_class": {
+    "name": "IJobExecutor",
+    "code": "public interface IJobExecutor {\n    void jobExecute(JobContext jobContext);\n}"
+  },
+  "before_function": "String getName();",
+  "after_function": "void jobExecute(JobContext jobContext);"
+}

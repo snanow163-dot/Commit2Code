@@ -1,0 +1,18 @@
+{
+  "SHA": "e2e98e03d98509e9703b357ec8a3c8e30533faeb",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/LockProvider.java",
+  "right_path": "easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/persistence/LockStorage.java",
+  "before_name": "supports",
+  "after_name": "supports",
+  "before_class": {
+    "name": "LockProvider",
+    "code": "public interface LockProvider {\n\n    boolean supports(String storageMedium);\n\n    boolean lock(LockConfig lockConfig);\n\n    boolean unlock(LockConfig lockConfig);\n\n}"
+  },
+  "after_class": {
+    "name": "LockStorage",
+    "code": "public interface LockStorage {\n\n    boolean supports(String storageMedium);\n\n    /**\n     * 创建锁记录\n     *\n     * @param lockConfig 锁配置\n     * @return\n     */\n    boolean createLock(LockConfig lockConfig);\n\n    /**\n     * 更新锁记录\n     *\n     * @param lockConfig 锁配置\n     * @return\n     */\n    boolean renewal(LockConfig lockConfig);\n\n    /**\n     * 删除锁记录释放锁\n     *\n     * @param lockName 锁名称\n     * @return\n     */\n    boolean releaseLockWithDelete(String lockName);\n\n    /**\n     * 更新锁定时长释放锁\n     *\n     * @param lockName    锁名称\n     * @param lockAtLeast 最少锁定时长\n     * @return\n     */\n    boolean releaseLockWithUpdate(String lockName, LocalDateTime lockAtLeast);\n\n}"
+  },
+  "before_function": "boolean supports(String storageMedium);",
+  "after_function": "boolean supports(String storageMedium);"
+}

@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/JobConverter.java",
+  "before_name": "toJob",
+  "after_name": "convert",
+  "before_class": {
+    "name": "JobConverter",
+    "code": "public interface JobConverter {\n\n    JobConverter INSTANCE = Mappers.getMapper(JobConverter.class);\n\n    Job toJob(JobRequestVO jobRequestVO);\n\n}"
+  },
+  "after_class": {
+    "name": "JobConverter",
+    "code": "public interface JobConverter {\n\n    JobConverter INSTANCE = Mappers.getMapper(JobConverter.class);\n\n    Job convert(JobRequestVO jobRequestVO);\n\n}"
+  },
+  "before_function": "Job toJob(JobRequestVO jobRequestVO);",
+  "after_function": "Job convert(JobRequestVO jobRequestVO);"
+}

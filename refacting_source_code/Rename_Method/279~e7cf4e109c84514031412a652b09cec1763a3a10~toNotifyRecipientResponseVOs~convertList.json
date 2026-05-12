@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/NotifyRecipientConverter.java",
+  "before_name": "toNotifyRecipientResponseVOs",
+  "after_name": "convertList",
+  "before_class": {
+    "name": "NotifyRecipientConverter",
+    "code": "public interface NotifyRecipientConverter {\n\n    NotifyRecipientConverter INSTANCE = Mappers.getMapper(NotifyRecipientConverter.class);\n\n    List<NotifyRecipientResponseVO> toNotifyRecipientResponseVOs(List<NotifyRecipient> notifyRecipients);\n\n    NotifyRecipient toNotifyRecipient(NotifyRecipientRequestVO requestVO);\n\n    List<CommonLabelValueResponseVO> toCommonLabelValueResponseVOs(List<NotifyRecipient> notifyRecipients);\n\n    @Mappings({\n        @Mapping(target = \"label\", source = \"recipientName\"),\n        @Mapping(target = \"value\", source = \"id\")\n    })\n    CommonLabelValueResponseVO toCommonLabelValueResponseVO(NotifyRecipient notifyRecipient);\n}"
+  },
+  "after_class": {
+    "name": "NotifyRecipientConverter",
+    "code": "public interface NotifyRecipientConverter {\n\n    NotifyRecipientConverter INSTANCE = Mappers.getMapper(NotifyRecipientConverter.class);\n\n    List<NotifyRecipientResponseVO> convertList(List<NotifyRecipient> notifyRecipients);\n\n    NotifyRecipient convert(NotifyRecipientRequestVO requestVO);\n\n    List<CommonLabelValueResponseVO> convertListToCommonLabelValueResponseList(List<NotifyRecipient> notifyRecipients);\n\n    @Mappings({\n        @Mapping(target = \"label\", source = \"recipientName\"),\n        @Mapping(target = \"value\", source = \"id\")\n    })\n    CommonLabelValueResponseVO convert(NotifyRecipient notifyRecipient);\n}"
+  },
+  "before_function": "List<NotifyRecipientResponseVO> toNotifyRecipientResponseVOs(List<NotifyRecipient> notifyRecipients);",
+  "after_function": "List<NotifyRecipientResponseVO> convertList(List<NotifyRecipient> notifyRecipients);"
+}

@@ -1,0 +1,17 @@
+{
+  "SHA": "8de1c560675b889ba065e0c1883ddd70fbc54616",
+  "type": "Rename Method",
+  "path": "snail-job-common/snail-job-common-core/src/main/java/com/aizuda/snailjob/common/core/alarm/SnailJobAlarmFactory.java",
+  "before_name": "SnailJobAlarmFactory",
+  "after_name": "register",
+  "before_class": {
+    "name": null,
+    "code": null
+  },
+  "after_class": {
+    "name": "SnailJobAlarmFactory",
+    "code": "public class SnailJobAlarmFactory {\n\n    private static final Map<Integer, Alarm> alarmMap = new ConcurrentHashMap<>();\n\n    public static void register(Alarm alarm) {\n        alarmMap.put(alarm.getAlarmType(), alarm);\n    }\n\n    public static Alarm getAlarmType(Integer alarmType) {\n        return alarmMap.get(alarmType);\n    }\n}"
+  },
+  "before_function": "SnailJobAlarmFactory(Map<String, Alarm> map) {\n        for (Map.Entry<String, Alarm> entry : map.entrySet()) {\n            alarmMap.put(entry.getValue().getAlarmType(), entry.getValue());\n        }\n    }",
+  "after_function": "void register(Alarm alarm) {\n        alarmMap.put(alarm.getAlarmType(), alarm);\n    }"
+}

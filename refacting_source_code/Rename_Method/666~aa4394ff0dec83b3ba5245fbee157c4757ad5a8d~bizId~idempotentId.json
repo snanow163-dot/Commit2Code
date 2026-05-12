@@ -1,0 +1,17 @@
+{
+  "SHA": "aa4394ff0dec83b3ba5245fbee157c4757ad5a8d",
+  "type": "Rename Method",
+  "path": "easy-retry-client-core/src/main/java/com/aizuda/easy/retry/client/core/annotation/Retryable.java",
+  "before_name": "bizId",
+  "after_name": "idempotentId",
+  "before_class": {
+    "name": null,
+    "code": null
+  },
+  "after_class": {
+    "name": null,
+    "code": null
+  },
+  "before_function": null,
+  "after_function": null
+}

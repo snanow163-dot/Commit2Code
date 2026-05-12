@@ -1,0 +1,17 @@
+{
+  "SHA": "5c8d95e1802b30c9142c001173d82ac037cb0d3c",
+  "type": "Rename Method",
+  "path": "snail-job-datasource/snail-job-datasource-template/src/main/java/com/aizuda/snailjob/template/datasource/persistence/mapper/RetrySummaryMapper.java",
+  "before_name": "batchInsert",
+  "after_name": "insertBatch",
+  "before_class": {
+    "name": "RetrySummaryMapper",
+    "code": "public interface RetrySummaryMapper extends BaseMapper<RetrySummary> {\n\n    int batchInsert(@Param(\"list\") List<RetrySummary> list);\n\n    int batchUpdate(@Param(\"list\") List<RetrySummary> list);\n\n    DashboardCardResponseDO.RetryTask retryTask(@Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n    List<DashboardCardResponseDO.RetryTask> retryTaskBarList(@Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n    IPage<DashboardRetryLineResponseDO.Task> retryTaskList(@Param(\"ew\") Wrapper<RetrySceneConfig> wrapper, Page<Object> page);\n\n    long retryTaskListCount(@Param(\"ew\") Wrapper<RetrySceneConfig> wrapper);\n\n    List<DashboardLineResponseDO> retryLineList(@Param(\"dateFormat\") String dateFormat, @Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n    List<DashboardRetryLineResponseDO.Rank> dashboardRank(@Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n}"
+  },
+  "after_class": {
+    "name": "RetrySummaryMapper",
+    "code": "public interface RetrySummaryMapper extends BaseMapper<RetrySummary> {\n\n    int insertBatch(@Param(\"list\") List<RetrySummary> list);\n\n    int updateBatch(@Param(\"list\") List<RetrySummary> list);\n\n    DashboardCardResponseDO.RetryTask selectRetryTask(@Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n    List<DashboardCardResponseDO.RetryTask> selectRetryTaskBarList(@Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n    IPage<DashboardRetryLineResponseDO.Task> selectRetryTaskList(@Param(\"ew\") Wrapper<RetrySceneConfig> wrapper, Page<Object> page);\n\n    long selectRetryTaskListCount(@Param(\"ew\") Wrapper<RetrySceneConfig> wrapper);\n\n    List<DashboardLineResponseDO> selectRetryLineList(@Param(\"dateFormat\") String dateFormat, @Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n    List<DashboardRetryLineResponseDO.Rank> selectDashboardRankList(@Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n}"
+  },
+  "before_function": "int batchInsert(@Param(\"list\") List<RetrySummary> list);",
+  "after_function": "int insertBatch(@Param(\"list\") List<RetrySummary> list);"
+}

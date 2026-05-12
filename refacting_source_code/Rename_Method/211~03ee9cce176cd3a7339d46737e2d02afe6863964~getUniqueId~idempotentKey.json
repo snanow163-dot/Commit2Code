@@ -1,0 +1,17 @@
+{
+  "SHA": "03ee9cce176cd3a7339d46737e2d02afe6863964",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/timer/WorkflowTimeoutCheckTask.java",
+  "before_name": "getUniqueId",
+  "after_name": "idempotentKey",
+  "before_class": {
+    "name": "WorkflowTimeoutCheckTask",
+    "code": "public class WorkflowTimeoutCheckTask implements TimerTask<Long> {\n    private final Long workflowTaskBatchId;\n\n    @Override\n    public void run(Timeout timeout) throws Exception {\n        WorkflowTaskBatchMapper workflowTaskBatchMapper = SpringContext.getBean(WorkflowTaskBatchMapper.class);\n        WorkflowTaskBatch workflowTaskBatch = workflowTaskBatchMapper.selectById(workflowTaskBatchId);\n        // 幂等检查\n        if (Objects.isNull(workflowTaskBatch) || JobTaskBatchStatusEnum.COMPLETED.contains(workflowTaskBatch.getTaskBatchStatus())) {\n            return;\n        }\n\n        WorkflowBatchHandler workflowBatchHandler = SpringContext.getBean(WorkflowBatchHandler.class);\n\n        // 超时停止任务\n        workflowBatchHandler.stop(workflowTaskBatchId, JobOperationReasonEnum.TASK_EXECUTION_TIMEOUT.getReason());\n        SpringContext.getContext().publishEvent(new WorkflowTaskFailAlarmEvent(workflowTaskBatchId));\n        SnailJobLog.LOCAL.info(\"超时中断.workflowTaskBatchId:[{}]\", workflowTaskBatchId);\n    }\n\n    @Override\n    public Long getUniqueId() {\n        return workflowTaskBatchId;\n    }\n}"
+  },
+  "after_class": {
+    "name": "WorkflowTimeoutCheckTask",
+    "code": "public class WorkflowTimeoutCheckTask implements TimerTask<String> {\n    private static final String IDEMPOTENT_KEY_PREFIX = \"workflow_timeout_check_{0}\";\n\n    private final Long workflowTaskBatchId;\n\n    @Override\n    public void run(Timeout timeout) throws Exception {\n        WorkflowTaskBatchMapper workflowTaskBatchMapper = SpringContext.getBean(WorkflowTaskBatchMapper.class);\n        WorkflowTaskBatch workflowTaskBatch = workflowTaskBatchMapper.selectById(workflowTaskBatchId);\n        // 幂等检查\n        if (Objects.isNull(workflowTaskBatch) || JobTaskBatchStatusEnum.COMPLETED.contains(workflowTaskBatch.getTaskBatchStatus())) {\n            return;\n        }\n\n        WorkflowBatchHandler workflowBatchHandler = SpringContext.getBean(WorkflowBatchHandler.class);\n\n        // 超时停止任务\n        workflowBatchHandler.stop(workflowTaskBatchId, JobOperationReasonEnum.TASK_EXECUTION_TIMEOUT.getReason());\n        SpringContext.getContext().publishEvent(new WorkflowTaskFailAlarmEvent(workflowTaskBatchId));\n        SnailJobLog.LOCAL.info(\"超时中断.workflowTaskBatchId:[{}]\", workflowTaskBatchId);\n    }\n\n    @Override\n    public String idempotentKey() {\n        return MessageFormat.format(IDEMPOTENT_KEY_PREFIX, workflowTaskBatchId);\n    }\n}"
+  },
+  "before_function": "Long getUniqueId() {\n        return workflowTaskBatchId;\n    }",
+  "after_function": "String idempotentKey() {\n        return MessageFormat.format(IDEMPOTENT_KEY_PREFIX, workflowTaskBatchId);\n    }"
+}

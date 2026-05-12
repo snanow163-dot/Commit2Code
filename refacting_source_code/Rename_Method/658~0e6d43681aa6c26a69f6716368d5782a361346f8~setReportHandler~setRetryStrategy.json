@@ -1,0 +1,17 @@
+{
+  "SHA": "0e6d43681aa6c26a69f6716368d5782a361346f8",
+  "type": "Rename Method",
+  "path": "easy-retry-client-core/src/main/java/com/aizuda/easy/retry/client/core/retryer/EasyRetryTemplate.java",
+  "before_name": "setReportHandler",
+  "after_name": "setRetryStrategy",
+  "before_class": {
+    "name": "EasyRetryTemplate",
+    "code": "public class EasyRetryTemplate implements RetryOperations {\n\n    private Class<? extends ExecutorMethod> executorMethodClass;\n    private String scene;\n    private Object[] params;\n    private ReportHandler reportHandler;\n    private long timeout = 60 * 1000;\n    private TimeUnit unit = TimeUnit.MILLISECONDS;\n\n    @Override\n    public void generateAsyncTask() {\n        generateAsyncTask(Boolean.FALSE);\n    }\n\n    @Override\n    public void generateAsyncTask(boolean forceReport) {\n        if (forceReport) {\n            reportHandler.asyncReportWithForce(scene, executorMethodClass.getName(), params);\n        } else {\n            reportHandler.asyncReport(scene, executorMethodClass.getName(), params);\n        }\n    }\n\n    @Override\n    public Boolean generateSyncTask() {\n       return generateSyncTask(Boolean.FALSE);\n    }\n\n    @Override\n    public Boolean generateSyncTask(final boolean forceReport) {\n        if (forceReport) {\n           return reportHandler.syncReportWithForce(scene, executorMethodClass.getName(), params, timeout, unit);\n        } else {\n            return reportHandler.syncReport(scene, executorMethodClass.getName(), params,  timeout, unit);\n        }\n    }\n\n    protected void setExecutorMethodClass(\n        final Class<? extends ExecutorMethod> executorMethodClass) {\n        this.executorMethodClass = executorMethodClass;\n    }\n\n    protected void setScene(final String scene) {\n        this.scene = scene;\n    }\n\n    protected void setParams(final Object[] params) {\n        this.params = params;\n    }\n\n    protected void setReportHandler(final ReportHandler reportHandler) {\n        this.reportHandler = reportHandler;\n    }\n\n    protected void setTimeout(final long timeout) {\n        this.timeout = timeout;\n    }\n\n    protected void setUnit(final TimeUnit unit) {\n        this.unit = unit;\n    }\n}"
+  },
+  "after_class": {
+    "name": "EasyRetryTemplate",
+    "code": "public class EasyRetryTemplate implements RetryOperations {\n\n    private Class<? extends ExecutorMethod> executorMethodClass;\n    private String scene;\n    private Object[] params;\n    private RetryStrategy retryStrategy;\n\n    @Override\n    public void executeRetry() {\n        retryStrategy.openRetry(scene, executorMethodClass.getName(), params);\n    }\n\n    protected void setExecutorMethodClass(\n        final Class<? extends ExecutorMethod> executorMethodClass) {\n        this.executorMethodClass = executorMethodClass;\n    }\n\n    protected void setScene(final String scene) {\n        this.scene = scene;\n    }\n\n    protected void setParams(final Object[] params) {\n        this.params = params;\n    }\n\n    protected void setRetryStrategy(final RetryStrategy retryStrategy) {\n        this.retryStrategy = retryStrategy;\n    }\n}"
+  },
+  "before_function": "void setReportHandler(final ReportHandler reportHandler) {\n        this.reportHandler = reportHandler;\n    }",
+  "after_function": "void setRetryStrategy(final RetryStrategy retryStrategy) {\n        this.retryStrategy = retryStrategy;\n    }"
+}

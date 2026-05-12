@@ -1,0 +1,17 @@
+{
+  "SHA": "a6d51999ed221dab8ef7dca45e02fba57d789efb",
+  "type": "Rename Method",
+  "path": "snail-job-client/snail-job-client-retry-core/src/main/java/com/aizuda/snailjob/client/core/annotation/Retryable.java",
+  "before_name": "retryIf",
+  "after_name": "retryIfResult",
+  "before_class": {
+    "name": null,
+    "code": null
+  },
+  "after_class": {
+    "name": null,
+    "code": null
+  },
+  "before_function": null,
+  "after_function": null
+}

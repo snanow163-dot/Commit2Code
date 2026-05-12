@@ -1,0 +1,17 @@
+{
+  "SHA": "d252e46d76dc829cc9e87d1b0751d59aa832aed4",
+  "type": "Rename Method",
+  "path": "snail-job-common/snail-job-common-core/src/main/java/com/aizuda/snailjob/common/core/enums/RetryOperationReasonEnum.java",
+  "before_name": "getWorkflowNotifyScene",
+  "after_name": "of",
+  "before_class": {
+    "name": "RetryOperationReasonEnum",
+    "code": "public enum RetryOperationReasonEnum {\n\n    NONE(0, StrUtil.EMPTY),\n    TASK_EXECUTION_TIMEOUT(1, \"任务执行超时\"),\n    NOT_CLIENT(2, \"无客户端节点\"),\n    JOB_CLOSED(3, \"JOB已关闭\"),\n    JOB_DISCARD(4, \"任务丢弃\"),\n    JOB_OVERLAY(5, \"任务被覆盖\"),\n    TASK_EXECUTION_ERROR(6, \"任务执行期间发生非预期异常\"),\n    MANNER_STOP(7, \"手动停止\"),\n    NOT_RUNNING_RETRY(8, \"当前重试非运行中\"),\n    SCENE_CLOSED(9, \"当前场景已关闭\"),\n    RETRY_FAIL(10, \"重试失败\"),\n    CLIENT_TRIGGER_RETRY_STOP(11, \"客户端触发任务停止\"),\n    ;\n\n    private final int reason;\n    private final String desc;\n\n    public static RetryOperationReasonEnum getWorkflowNotifyScene(Integer notifyScene) {\n        for (RetryOperationReasonEnum sceneEnum : RetryOperationReasonEnum.values()) {\n            if (sceneEnum.getReason() == notifyScene) {\n                return sceneEnum;\n            }\n        }\n\n        return NONE;\n    }\n\n}"
+  },
+  "after_class": {
+    "name": "RetryOperationReasonEnum",
+    "code": "public enum RetryOperationReasonEnum {\n\n    NONE(0, StrUtil.EMPTY),\n    TASK_EXECUTION_TIMEOUT(1, \"任务执行超时\"),\n    NOT_CLIENT(2, \"无客户端节点\"),\n    RETRY_SUSPEND(3, \"重试已暂停\"),\n    RETRY_TASK_DISCARD(4, \"任务丢弃\"),\n    RETRY_TASK_OVERLAY(5, \"任务被覆盖\"),\n    TASK_EXECUTION_ERROR(6, \"任务执行期间发生非预期异常\"),\n    MANNER_STOP(7, \"手动停止\"),\n    NOT_RUNNING_RETRY(8, \"当前重试非运行中\"),\n    SCENE_CLOSED(9, \"当前场景已关闭\"),\n    RETRY_FAIL(10, \"重试失败\"),\n    CLIENT_TRIGGER_RETRY_STOP(11, \"客户端触发任务停止\"),\n    ;\n\n    private final int reason;\n    private final String desc;\n\n    public static RetryOperationReasonEnum of(Integer operationReason) {\n        if (operationReason == null) {\n            return NONE;\n        }\n\n        for (RetryOperationReasonEnum sceneEnum : RetryOperationReasonEnum.values()) {\n            if (sceneEnum.getReason() == operationReason) {\n                return sceneEnum;\n            }\n        }\n\n        return NONE;\n    }\n\n}"
+  },
+  "before_function": "RetryOperationReasonEnum getWorkflowNotifyScene(Integer notifyScene) {\n        for (RetryOperationReasonEnum sceneEnum : RetryOperationReasonEnum.values()) {\n            if (sceneEnum.getReason() == notifyScene) {\n                return sceneEnum;\n            }\n        }\n\n        return NONE;\n    }",
+  "after_function": "RetryOperationReasonEnum of(Integer operationReason) {\n        if (operationReason == null) {\n            return NONE;\n        }\n\n        for (RetryOperationReasonEnum sceneEnum : RetryOperationReasonEnum.values()) {\n            if (sceneEnum.getReason() == operationReason) {\n                return sceneEnum;\n            }\n        }\n\n        return NONE;\n    }"
+}

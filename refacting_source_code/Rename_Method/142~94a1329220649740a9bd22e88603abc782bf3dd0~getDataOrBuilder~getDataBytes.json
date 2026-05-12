@@ -1,0 +1,17 @@
+{
+  "SHA": "94a1329220649740a9bd22e88603abc782bf3dd0",
+  "type": "Rename Method",
+  "path": "snail-job-common/snail-job-common-core/src/main/java/com/aizuda/snailjob/common/core/grpc/auto/GrpcResultOrBuilder.java",
+  "before_name": "getDataOrBuilder",
+  "after_name": "getDataBytes",
+  "before_class": {
+    "name": "GrpcResultOrBuilder",
+    "code": "\npublic interface GrpcResultOrBuilder extends\n    // @@protoc_insertion_point(interface_extends:GrpcResult)\n    com.google.protobuf.MessageOrBuilder {\n\n  /**\n   * <code>int64 reqId = 1;</code>\n   * @return The reqId.\n   */\n  long getReqId();\n\n  /**\n   * <code>int32 status = 2;</code>\n   * @return The status.\n   */\n  int getStatus();\n\n  /**\n   * <code>string message = 3;</code>\n   * @return The message.\n   */\n  java.lang.String getMessage();\n  /**\n   * <code>string message = 3;</code>\n   * @return The bytes for message.\n   */\n  com.google.protobuf.ByteString\n      getMessageBytes();\n\n  /**\n   * <code>.google.protobuf.Any data = 4;</code>\n   * @return Whether the data field is set.\n   */\n  boolean hasData();\n  /**\n   * <code>.google.protobuf.Any data = 4;</code>\n   * @return The data.\n   */\n  com.google.protobuf.Any getData();\n  /**\n   * <code>.google.protobuf.Any data = 4;</code>\n   */\n  com.google.protobuf.AnyOrBuilder getDataOrBuilder();\n}"
+  },
+  "after_class": {
+    "name": "GrpcResultOrBuilder",
+    "code": "\npublic interface GrpcResultOrBuilder extends\n    // @@protoc_insertion_point(interface_extends:GrpcResult)\n    com.google.protobuf.MessageOrBuilder {\n\n  /**\n   * <code>int64 reqId = 1;</code>\n   * @return The reqId.\n   */\n  long getReqId();\n\n  /**\n   * <code>int32 status = 2;</code>\n   * @return The status.\n   */\n  int getStatus();\n\n  /**\n   * <code>string message = 3;</code>\n   * @return The message.\n   */\n  java.lang.String getMessage();\n  /**\n   * <code>string message = 3;</code>\n   * @return The bytes for message.\n   */\n  com.google.protobuf.ByteString\n      getMessageBytes();\n\n  /**\n   * <code>string data = 4;</code>\n   * @return The data.\n   */\n  java.lang.String getData();\n  /**\n   * <code>string data = 4;</code>\n   * @return The bytes for data.\n   */\n  com.google.protobuf.ByteString\n      getDataBytes();\n}"
+  },
+  "before_function": "com.google.protobuf.AnyOrBuilder getDataOrBuilder();",
+  "after_function": "com.google.protobuf.ByteString\n      getDataBytes();"
+}

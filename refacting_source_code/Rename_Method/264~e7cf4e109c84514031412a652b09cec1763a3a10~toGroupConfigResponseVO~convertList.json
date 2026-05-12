@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/GroupConfigResponseVOConverter.java",
+  "before_name": "toGroupConfigResponseVO",
+  "after_name": "convertList",
+  "before_class": {
+    "name": "GroupConfigResponseVOConverter",
+    "code": "public interface GroupConfigResponseVOConverter {\n\n    GroupConfigResponseVOConverter INSTANCE = Mappers.getMapper(GroupConfigResponseVOConverter.class);\n\n    GroupConfigResponseVO toGroupConfigResponseVO(GroupConfig groupConfig);\n\n    List<GroupConfigResponseVO> toGroupConfigResponseVO(List<GroupConfig> groupConfigs);\n}"
+  },
+  "after_class": {
+    "name": "GroupConfigResponseVOConverter",
+    "code": "public interface GroupConfigResponseVOConverter {\n\n    GroupConfigResponseVOConverter INSTANCE = Mappers.getMapper(GroupConfigResponseVOConverter.class);\n\n    GroupConfigResponseVO convert(GroupConfig groupConfig);\n\n    List<GroupConfigResponseVO> convertList(List<GroupConfig> groupConfigs);\n}"
+  },
+  "before_function": "GroupConfigResponseVO toGroupConfigResponseVO(GroupConfig groupConfig);",
+  "after_function": "List<GroupConfigResponseVO> convertList(List<GroupConfig> groupConfigs);"
+}

@@ -1,0 +1,18 @@
+{
+  "SHA": "7db7f83d932248ced43fdc558ef52c84cf950188",
+  "type": "Move Method",
+  "left_path": "snail-job-client/snail-job-client-common/src/main/java/com/aizuda/snailjob/client/common/client/NettyClient.java",
+  "right_path": "snail-job-client/snail-job-client-common/src/main/java/com/aizuda/snailjob/client/common/NettyClient.java",
+  "before_name": "reportRetryInfo",
+  "after_name": "reportRetryInfo",
+  "before_class": {
+    "name": "NettyClient",
+    "code": "public interface NettyClient {\n\n    @Mapping(method = RequestMethod.POST, path = HTTP_PATH.BATCH_REPORT)\n    NettyResult reportRetryInfo(List<RetryTaskDTO> list);\n\n    @Mapping(method = RequestMethod.POST, path = HTTP_PATH.BATCH_LOG_REPORT)\n    NettyResult reportLogTask(List<LogTaskDTO> list);\n\n}"
+  },
+  "after_class": {
+    "name": "NettyClient",
+    "code": "public interface NettyClient {\n\n    @Mapping(method = RequestMethod.POST, path = HTTP_PATH.BATCH_REPORT)\n    NettyResult reportRetryInfo(List<RetryTaskDTO> list);\n\n    @Mapping(method = RequestMethod.POST, path = HTTP_PATH.BATCH_LOG_REPORT)\n    NettyResult reportLogTask(List<LogTaskDTO> list);\n\n    @Mapping(method = RequestMethod.POST, path = HTTP_PATH.SYNC_CONFIG)\n    Result syncRemoteConfig();\n\n    @Mapping(method = RequestMethod.POST, path = HTTP_PATH.BEAT)\n    Result beat(String mark);\n\n}"
+  },
+  "before_function": "NettyResult reportRetryInfo(List<RetryTaskDTO> list);",
+  "after_function": "NettyResult reportRetryInfo(List<RetryTaskDTO> list);"
+}

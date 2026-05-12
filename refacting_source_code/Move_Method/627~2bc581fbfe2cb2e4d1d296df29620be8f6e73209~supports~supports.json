@@ -1,0 +1,18 @@
+{
+  "SHA": "2bc581fbfe2cb2e4d1d296df29620be8f6e73209",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/src/main/java/com/aizuda/easy/retry/server/persistence/support/Access.java",
+  "right_path": "easy-retry-server/src/main/java/com/aizuda/easy/retry/server/support/lock/LockProvider.java",
+  "before_name": "supports",
+  "after_name": "supports",
+  "before_class": {
+    "name": "Access",
+    "code": "public interface Access {\n\n    boolean supports(String storageMedium);\n}"
+  },
+  "after_class": {
+    "name": "LockProvider",
+    "code": "public interface LockProvider {\n\n    boolean supports(String storageMedium);\n\n    boolean lock(LockConfig lockConfig);\n\n    boolean unlock(LockConfig lockConfig);\n\n}"
+  },
+  "before_function": "boolean supports(String storageMedium);",
+  "after_function": "boolean supports(String storageMedium);"
+}

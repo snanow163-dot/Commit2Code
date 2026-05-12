@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/DispatchQuantityResponseVOConverter.java",
+  "before_name": "toDashboardLineResponseVO",
+  "after_name": "convertList",
+  "before_class": {
+    "name": "DispatchQuantityResponseVOConverter",
+    "code": "public interface DispatchQuantityResponseVOConverter {\n\n    DispatchQuantityResponseVOConverter INSTANCE = Mappers.getMapper(DispatchQuantityResponseVOConverter.class);\n\n    List<DashboardLineResponseVO> toDashboardLineResponseVO(List<DashboardLineResponseDO> dashboardLineResponseDOList);\n}"
+  },
+  "after_class": {
+    "name": "DispatchQuantityResponseVOConverter",
+    "code": "public interface DispatchQuantityResponseVOConverter {\n\n    DispatchQuantityResponseVOConverter INSTANCE = Mappers.getMapper(DispatchQuantityResponseVOConverter.class);\n\n    List<DashboardLineResponseVO> convertList(List<DashboardLineResponseDO> dashboardLineResponseDOList);\n}"
+  },
+  "before_function": "List<DashboardLineResponseVO> toDashboardLineResponseVO(List<DashboardLineResponseDO> dashboardLineResponseDOList);",
+  "after_function": "List<DashboardLineResponseVO> convertList(List<DashboardLineResponseDO> dashboardLineResponseDOList);"
+}

@@ -1,0 +1,18 @@
+{
+  "SHA": "51b82286ea7c40037387df4e6888b021878357c1",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/easy-retry-server-starter/src/main/java/com/aizuda/easy/retry/server/EasyRetryServerApplication.java",
+  "right_path": "easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/config/EasyRetryServerCommonAutoConfiguration.java",
+  "before_name": "scheduledExecutorService",
+  "after_name": "scheduledExecutorService",
+  "before_class": {
+    "name": "EasyRetryServerApplication",
+    "code": "public class EasyRetryServerApplication {\n\n    @Bean\n    public TaskScheduler scheduledExecutorService() {\n        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();\n        scheduler.setPoolSize(2);\n        scheduler.setThreadNamePrefix(\"easy-retry-scheduled-thread-\");\n        return scheduler;\n    }\n\n    public static void main(String[] args) {\n        TimeZone.setDefault(TimeZone.getTimeZone(\"Asia/Shanghai\"));\n        SpringApplication.run(EasyRetryServerApplication.class, args);\n    }\n\n    @Bean\n    public ApplicationRunner nettyStartupChecker(NettyHttpServer nettyHttpServer, ServletWebServerFactory serverFactory) {\n        return args -> {\n            // 最长自旋10秒，保证nettyHttpServer启动完成\n            int waitCount = 0;\n            while (!nettyHttpServer.isStarted() || waitCount > 100) {\n                log.info(\"--------> easy-retry netty server is staring....\");\n                TimeUnit.MILLISECONDS.sleep(100);\n                waitCount++;\n            }\n\n            if (!nettyHttpServer.isStarted()) {\n                log.error(\"--------> easy-retry netty server startup failure.\");\n                // Netty启动失败，停止Web服务和Spring Boot应用程序\n                serverFactory.getWebServer().stop();\n                SpringApplication.exit(SpringApplication.run(EasyRetryServerApplication.class));\n            }\n        };\n    }\n}"
+  },
+  "after_class": {
+    "name": "EasyRetryServerCommonAutoConfiguration",
+    "code": "public class EasyRetryServerCommonAutoConfiguration {\n\n    @Bean\n    public TaskScheduler scheduledExecutorService() {\n        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();\n        scheduler.setPoolSize(4);\n        scheduler.setThreadNamePrefix(\"easy-retry-scheduled-thread-\");\n        return scheduler;\n    }\n}"
+  },
+  "before_function": "TaskScheduler scheduledExecutorService() {\n        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();\n        scheduler.setPoolSize(2);\n        scheduler.setThreadNamePrefix(\"easy-retry-scheduled-thread-\");\n        return scheduler;\n    }",
+  "after_function": "TaskScheduler scheduledExecutorService() {\n        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();\n        scheduler.setPoolSize(4);\n        scheduler.setThreadNamePrefix(\"easy-retry-scheduled-thread-\");\n        return scheduler;\n    }"
+}

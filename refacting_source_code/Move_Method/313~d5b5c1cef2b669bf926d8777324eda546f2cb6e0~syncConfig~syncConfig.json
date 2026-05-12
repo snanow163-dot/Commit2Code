@@ -1,0 +1,18 @@
+{
+  "SHA": "d5b5c1cef2b669bf926d8777324eda546f2cb6e0",
+  "type": "Move Method",
+  "left_path": "snail-job-server/snail-job-server-retry-task/src/main/java/com/aizuda/snailjob/server/retry/task/client/RetryRpcClient.java",
+  "right_path": "snail-job-server/snail-job-server-common/src/main/java/com/aizuda/snailjob/server/common/client/CommonRpcClient.java",
+  "before_name": "syncConfig",
+  "after_name": "syncConfig",
+  "before_class": {
+    "name": "RetryRpcClient",
+    "code": "public interface RetryRpcClient {\n\n    @Mapping(path = \"/retry/dispatch/v1\", method = RequestMethod.POST)\n    Result<DispatchRetryResultDTO> dispatch(@Body DispatchRetryDTO dispatchRetryDTO, @Header SnailJobHeaders headers);\n\n    @Mapping(path = \"/retry/callback/v1\", method = RequestMethod.POST)\n    Result callback(@Body RetryCallbackDTO retryCallbackDTO);\n\n    @Mapping(path = \"/retry/generate/idempotent-id/v1\", method = RequestMethod.POST)\n    Result generateIdempotentId(@Body GenerateRetryIdempotentIdDTO retryCallbackDTO);\n\n    @Mapping(path = \"/retry/sync/version/v1\", method = RequestMethod.POST)\n    Result syncConfig(@Body ConfigDTO configDTO);\n\n}"
+  },
+  "after_class": {
+    "name": "CommonRpcClient",
+    "code": "public interface CommonRpcClient {\n\n    @Mapping(path = SYNC_CONFIG, method = RequestMethod.POST)\n    Result syncConfig(@Body ConfigDTO configDTO);\n\n}"
+  },
+  "before_function": "Result syncConfig(@Body ConfigDTO configDTO);",
+  "after_function": "Result syncConfig(@Body ConfigDTO configDTO);"
+}

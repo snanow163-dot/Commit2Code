@@ -1,0 +1,18 @@
+{
+  "SHA": "f581313d2ddcd43487d0c73ddb1ebc8a999cfcd6",
+  "type": "Move Method",
+  "left_path": "x-retry-server/src/main/java/com/x/retry/server/persistence/mybatis/mapper/RetryTaskLogMapper.java",
+  "right_path": "x-retry-server/src/main/java/com/x/retry/server/service/DashBoardService.java",
+  "before_name": "rankSceneQuantity",
+  "after_name": "rankSceneQuantity",
+  "before_class": {
+    "name": "RetryTaskLogMapper",
+    "code": "\npublic interface RetryTaskLogMapper extends BaseMapper<RetryTaskLog> {\n\n    int deleteByPrimaryKey(Long id);\n\n    RetryTaskLog selectByPrimaryKey(Long id);\n\n    long countTaskTotal();\n\n    long countTaskByRetryStatus(@Param(\"retryStatus\") Integer retryStatus);\n\n    List<SceneQuantityRankResponseVO> rankSceneQuantity(@Param(\"groupName\") String groupName);\n\n    List<DispatchQuantityResponseVO> lineDispatchQuantity(@Param(\"groupName\") String groupName,\n                                                          @Param(\"retryStatus\") Integer retryStatus);\n\n}"
+  },
+  "after_class": {
+    "name": "DashBoardService",
+    "code": "public interface DashBoardService {\n\n    TaskQuantityResponseVO countTask();\n\n    DispatchQuantityResponseVO countDispatch();\n\n    ActivePodQuantityResponseVO countActivePod();\n\n    List<SceneQuantityRankResponseVO> rankSceneQuantity(String groupName, String type, String startTime, String endTime);\n\n    List<DispatchQuantityResponseVO> lineDispatchQuantity(String groupName, String type, String startTime, String endTime);\n\n}"
+  },
+  "before_function": "List<SceneQuantityRankResponseVO> rankSceneQuantity(@Param(\"groupName\") String groupName);",
+  "after_function": "List<SceneQuantityRankResponseVO> rankSceneQuantity(String groupName, String type, String startTime, String endTime);"
+}

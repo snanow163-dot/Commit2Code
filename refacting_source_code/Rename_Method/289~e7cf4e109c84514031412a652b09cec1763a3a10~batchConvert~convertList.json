@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/SystemUserResponseVOConverter.java",
+  "before_name": "batchConvert",
+  "after_name": "convertList",
+  "before_class": {
+    "name": "SystemUserResponseVOConverter",
+    "code": "public interface SystemUserResponseVOConverter {\n\n    SystemUserResponseVOConverter INSTANCE = Mappers.getMapper(SystemUserResponseVOConverter.class);\n\n    SystemUserResponseVO convert(UserSessionVO systemUser);\n\n    SystemUserResponseVO convert(SystemUser systemUser);\n\n    List<SystemUserResponseVO> batchConvert(List<SystemUser> systemUsers);\n}"
+  },
+  "after_class": {
+    "name": "SystemUserResponseVOConverter",
+    "code": "public interface SystemUserResponseVOConverter {\n\n    SystemUserResponseVOConverter INSTANCE = Mappers.getMapper(SystemUserResponseVOConverter.class);\n\n    SystemUserResponseVO convert(UserSessionVO systemUser);\n\n    SystemUserResponseVO convert(SystemUser systemUser);\n\n    List<SystemUserResponseVO> convertList(List<SystemUser> systemUsers);\n}"
+  },
+  "before_function": "List<SystemUserResponseVO> batchConvert(List<SystemUser> systemUsers);",
+  "after_function": "List<SystemUserResponseVO> convertList(List<SystemUser> systemUsers);"
+}

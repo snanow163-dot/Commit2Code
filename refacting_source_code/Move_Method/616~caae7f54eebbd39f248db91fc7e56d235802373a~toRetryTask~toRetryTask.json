@@ -1,0 +1,18 @@
+{
+  "SHA": "caae7f54eebbd39f248db91fc7e56d235802373a",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/src/main/java/com/aizuda/easy/retry/server/service/convert/RetryTaskConverter.java",
+  "right_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/RetryTaskConverter.java",
+  "before_name": "toRetryTask",
+  "after_name": "toRetryTask",
+  "before_class": {
+    "name": "RetryTaskConverter",
+    "code": "public interface RetryTaskConverter {\n\n    RetryTaskConverter INSTANCE = Mappers.getMapper(RetryTaskConverter.class);\n\n    RetryTask toRetryTask(RetryTaskDTO retryTaskDTO);\n\n    RetryTask toRetryTask(RetryTask retryTask);\n\n    @Mappings({\n        @Mapping(target = \"id\", ignore = true),\n    })\n    RetryTask toRetryTask(RetryDeadLetter retryDeadLetter);\n\n    RetryTask toRetryTask(RetryTaskSaveRequestVO retryTaskSaveRequestVO);\n\n    List<RetryTask> toRetryTaskList(List<RetryTaskDTO> retryTaskDTOList);\n\n    RetryTask toRetryTask(TaskContext.TaskInfo taskInfo);\n}"
+  },
+  "after_class": {
+    "name": "RetryTaskConverter",
+    "code": "public interface RetryTaskConverter {\n\n    RetryTaskConverter INSTANCE = Mappers.getMapper(RetryTaskConverter.class);\n\n    RetryTask toRetryTask(RetryTaskDTO retryTaskDTO);\n\n    RetryTask toRetryTask(RetryTask retryTask);\n\n    @Mappings({\n        @Mapping(target = \"id\", ignore = true),\n    })\n    RetryTask toRetryTask(RetryDeadLetter retryDeadLetter);\n\n//    RetryTask toRetryTask(RetryTaskSaveRequestVO retryTaskSaveRequestVO);\n\n    List<RetryTask> toRetryTaskList(List<RetryTaskDTO> retryTaskDTOList);\n\n    RetryTask toRetryTask(TaskContext.TaskInfo taskInfo);\n}"
+  },
+  "before_function": "RetryTask toRetryTask(RetryTaskDTO retryTaskDTO);",
+  "after_function": "RetryTask toRetryTask(RetryTaskDTO retryTaskDTO);"
+}

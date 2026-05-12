@@ -1,0 +1,17 @@
+{
+  "SHA": "3b04af96e4ebc246cebe3314771098b1adb71146",
+  "type": "Rename Method",
+  "path": "x-retry-client-core/src/main/java/com/x/retry/client/core/init/StartListener.java",
+  "before_name": "onApplicationEvent",
+  "after_name": "run",
+  "before_class": {
+    "name": "StartListener",
+    "code": "public class StartListener implements ApplicationListener<ContextRefreshedEvent> {\n\n    @Autowired\n    private List<Lifecycle> lifecycleList;\n\n    @Override\n    public void onApplicationEvent(ContextRefreshedEvent event) {\n        log.info(\"X-RETRY-CLIENT-RETRY 启动\");\n        lifecycleList.forEach(Lifecycle::start);\n        log.info(\"X-RETRY-CLIENT-RETRY 启动成功\");\n    }\n}"
+  },
+  "after_class": {
+    "name": "StartListener",
+    "code": "public class StartListener implements ApplicationRunner {\n\n    @Autowired\n    private List<Lifecycle> lifecycleList;\n\n    @Override\n    public void run(ApplicationArguments args) throws Exception {\n        log.info(\"X-RETRY-CLIENT-RETRY 启动\");\n        lifecycleList.forEach(Lifecycle::start);\n        log.info(\"X-RETRY-CLIENT-RETRY 启动成功\");\n    }\n}"
+  },
+  "before_function": "void onApplicationEvent(ContextRefreshedEvent event) {\n        log.info(\"X-RETRY-CLIENT-RETRY 启动\");\n        lifecycleList.forEach(Lifecycle::start);\n        log.info(\"X-RETRY-CLIENT-RETRY 启动成功\");\n    }",
+  "after_function": "void run(ApplicationArguments args) throws Exception {\n        log.info(\"X-RETRY-CLIENT-RETRY 启动\");\n        lifecycleList.forEach(Lifecycle::start);\n        log.info(\"X-RETRY-CLIENT-RETRY 启动成功\");\n    }"
+}

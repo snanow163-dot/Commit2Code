@@ -1,0 +1,18 @@
+{
+  "SHA": "01fb0cda20bff259604a3e93d7b53c60d049e5fd",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/dispatch/actor/scan/AbstractScanGroup.java",
+  "right_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/dispatch/task/AbstractTaskActuator.java",
+  "before_name": "abstract",
+  "after_name": "abstract",
+  "before_class": {
+    "name": null,
+    "code": null
+  },
+  "after_class": {
+    "name": null,
+    "code": null
+  },
+  "before_function": null,
+  "after_function": null
+}

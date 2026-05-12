@@ -1,0 +1,17 @@
+{
+  "SHA": "9603dd30c750e09ca31a2e91cbaf1099d4433687",
+  "type": "Rename Method",
+  "path": "easy-retry-server/easy-retry-server-web/src/main/java/com/aizuda/easy/retry/server/web/service/GroupConfigService.java",
+  "before_name": "getAllGroupNameList",
+  "after_name": "getAllGroupConfigList",
+  "before_class": {
+    "name": "GroupConfigService",
+    "code": "public interface GroupConfigService {\n\n    Boolean addGroup(GroupConfigRequestVO groupConfigRequestVO);\n\n    Boolean updateGroup(GroupConfigRequestVO groupConfigRequestVO);\n\n    Boolean updateGroupStatus(String groupName, Integer status);\n\n    PageResult<List<GroupConfigResponseVO>> getGroupConfigForPage(GroupConfigQueryVO queryVO);\n\n    GroupConfigResponseVO getGroupConfigByGroupName(String groupName);\n\n    List<GroupConfigResponseVO> getAllGroupNameList(final List<String> namespaceId);\n}"
+  },
+  "after_class": {
+    "name": "GroupConfigService",
+    "code": "public interface GroupConfigService {\n\n    Boolean addGroup(UserSessionVO systemUser, GroupConfigRequestVO groupConfigRequestVO);\n\n    Boolean updateGroup(GroupConfigRequestVO groupConfigRequestVO);\n\n    Boolean updateGroupStatus(String groupName, Integer status);\n\n    PageResult<List<GroupConfigResponseVO>> getGroupConfigForPage(GroupConfigQueryVO queryVO);\n\n    GroupConfigResponseVO getGroupConfigByGroupName(String groupName);\n\n    List<GroupConfigResponseVO> getAllGroupConfigList(final List<String> namespaceId);\n\n    List<String> getAllGroupNameList();\n\n}"
+  },
+  "before_function": "List<GroupConfigResponseVO> getAllGroupNameList(final List<String> namespaceId);",
+  "after_function": "List<GroupConfigResponseVO> getAllGroupConfigList(final List<String> namespaceId);"
+}

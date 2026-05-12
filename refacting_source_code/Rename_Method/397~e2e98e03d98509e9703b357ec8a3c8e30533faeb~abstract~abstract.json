@@ -1,0 +1,17 @@
+{
+  "SHA": "e2e98e03d98509e9703b357ec8a3c8e30533faeb",
+  "type": "Rename Method",
+  "path": "easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/AbstractLockProvider.java",
+  "before_name": "abstract",
+  "after_name": "abstract",
+  "before_class": {
+    "name": null,
+    "code": null
+  },
+  "after_class": {
+    "name": null,
+    "code": null
+  },
+  "before_function": null,
+  "after_function": null
+}

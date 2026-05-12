@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/PermissionsResponseVOConverter.java",
+  "before_name": "toPermissionsResponseVOs",
+  "after_name": "convertList",
+  "before_class": {
+    "name": "PermissionsResponseVOConverter",
+    "code": "public interface PermissionsResponseVOConverter {\n\n    PermissionsResponseVOConverter INSTANCE = Mappers.getMapper(PermissionsResponseVOConverter.class);\n\n    List<PermissionsResponseVO> toPermissionsResponseVOs(List<SystemUserPermission> systemUserPermissionList);\n\n}"
+  },
+  "after_class": {
+    "name": "PermissionsResponseVOConverter",
+    "code": "public interface PermissionsResponseVOConverter {\n\n    PermissionsResponseVOConverter INSTANCE = Mappers.getMapper(PermissionsResponseVOConverter.class);\n\n    List<PermissionsResponseVO> convertList(List<SystemUserPermission> systemUserPermissionList);\n\n}"
+  },
+  "before_function": "List<PermissionsResponseVO> toPermissionsResponseVOs(List<SystemUserPermission> systemUserPermissionList);",
+  "after_function": "List<PermissionsResponseVO> convertList(List<SystemUserPermission> systemUserPermissionList);"
+}

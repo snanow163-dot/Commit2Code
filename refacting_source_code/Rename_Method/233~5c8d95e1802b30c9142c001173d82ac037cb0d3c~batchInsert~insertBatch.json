@@ -1,0 +1,17 @@
+{
+  "SHA": "5c8d95e1802b30c9142c001173d82ac037cb0d3c",
+  "type": "Rename Method",
+  "path": "snail-job-datasource/snail-job-datasource-template/src/main/java/com/aizuda/snailjob/template/datasource/persistence/mapper/RetryTaskMapper.java",
+  "before_name": "batchInsert",
+  "after_name": "insertBatch",
+  "before_class": {
+    "name": "RetryTaskMapper",
+    "code": "\npublic interface RetryTaskMapper extends BaseMapper<RetryTask> {\n\n    int batchInsert(@Param(\"list\") List<RetryTask> list);\n\n    int updateBatchNextTriggerAtById(@Param(\"partition\") Integer partition, @Param(\"list\") List<RetryTask> list);\n}"
+  },
+  "after_class": {
+    "name": "RetryTaskMapper",
+    "code": "\npublic interface RetryTaskMapper extends BaseMapper<RetryTask> {\n\n    int insertBatch(@Param(\"list\") List<RetryTask> list);\n\n    int updateBatchNextTriggerAtById(@Param(\"partition\") Integer partition, @Param(\"list\") List<RetryTask> list);\n}"
+  },
+  "before_function": "int batchInsert(@Param(\"list\") List<RetryTask> list);",
+  "after_function": "int insertBatch(@Param(\"list\") List<RetryTask> list);"
+}

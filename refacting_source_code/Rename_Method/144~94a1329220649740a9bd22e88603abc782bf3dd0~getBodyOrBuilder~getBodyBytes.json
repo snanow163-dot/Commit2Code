@@ -1,0 +1,17 @@
+{
+  "SHA": "94a1329220649740a9bd22e88603abc782bf3dd0",
+  "type": "Rename Method",
+  "path": "snail-job-common/snail-job-common-core/src/main/java/com/aizuda/snailjob/common/core/grpc/auto/GrpcSnailJobRequestOrBuilder.java",
+  "before_name": "getBodyOrBuilder",
+  "after_name": "getBodyBytes",
+  "before_class": {
+    "name": "GrpcSnailJobRequestOrBuilder",
+    "code": "\npublic interface GrpcSnailJobRequestOrBuilder extends\n    // @@protoc_insertion_point(interface_extends:GrpcSnailJobRequest)\n    com.google.protobuf.MessageOrBuilder {\n\n  /**\n   * <code>int64 reqId = 1;</code>\n   * @return The reqId.\n   */\n  long getReqId();\n\n  /**\n   * <code>.Metadata metadata = 2;</code>\n   * @return Whether the metadata field is set.\n   */\n  boolean hasMetadata();\n  /**\n   * <code>.Metadata metadata = 2;</code>\n   * @return The metadata.\n   */\n  com.aizuda.snailjob.common.core.grpc.auto.Metadata getMetadata();\n  /**\n   * <code>.Metadata metadata = 2;</code>\n   */\n  com.aizuda.snailjob.common.core.grpc.auto.MetadataOrBuilder getMetadataOrBuilder();\n\n  /**\n   * <code>.google.protobuf.Any body = 3;</code>\n   * @return Whether the body field is set.\n   */\n  boolean hasBody();\n  /**\n   * <code>.google.protobuf.Any body = 3;</code>\n   * @return The body.\n   */\n  com.google.protobuf.Any getBody();\n  /**\n   * <code>.google.protobuf.Any body = 3;</code>\n   */\n  com.google.protobuf.AnyOrBuilder getBodyOrBuilder();\n}"
+  },
+  "after_class": {
+    "name": "GrpcSnailJobRequestOrBuilder",
+    "code": "\npublic interface GrpcSnailJobRequestOrBuilder extends\n    // @@protoc_insertion_point(interface_extends:GrpcSnailJobRequest)\n    com.google.protobuf.MessageOrBuilder {\n\n  /**\n   * <code>int64 reqId = 1;</code>\n   * @return The reqId.\n   */\n  long getReqId();\n\n  /**\n   * <code>.Metadata metadata = 2;</code>\n   * @return Whether the metadata field is set.\n   */\n  boolean hasMetadata();\n  /**\n   * <code>.Metadata metadata = 2;</code>\n   * @return The metadata.\n   */\n  com.aizuda.snailjob.common.core.grpc.auto.Metadata getMetadata();\n  /**\n   * <code>.Metadata metadata = 2;</code>\n   */\n  com.aizuda.snailjob.common.core.grpc.auto.MetadataOrBuilder getMetadataOrBuilder();\n\n  /**\n   * <code>string body = 3;</code>\n   * @return The body.\n   */\n  java.lang.String getBody();\n  /**\n   * <code>string body = 3;</code>\n   * @return The bytes for body.\n   */\n  com.google.protobuf.ByteString\n      getBodyBytes();\n}"
+  },
+  "before_function": "com.google.protobuf.AnyOrBuilder getBodyOrBuilder();",
+  "after_function": "com.google.protobuf.ByteString\n      getBodyBytes();"
+}

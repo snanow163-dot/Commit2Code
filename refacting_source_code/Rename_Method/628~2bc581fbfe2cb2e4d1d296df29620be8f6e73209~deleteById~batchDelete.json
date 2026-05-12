@@ -1,0 +1,17 @@
+{
+  "SHA": "2bc581fbfe2cb2e4d1d296df29620be8f6e73209",
+  "type": "Rename Method",
+  "path": "easy-retry-server/src/main/java/com/aizuda/easy/retry/server/service/RetryDeadLetterService.java",
+  "before_name": "deleteById",
+  "after_name": "batchDelete",
+  "before_class": {
+    "name": "RetryDeadLetterService",
+    "code": "public interface RetryDeadLetterService {\n\n    PageResult<List<RetryDeadLetterResponseVO>> getRetryDeadLetterPage(RetryDeadLetterQueryVO queryVO);\n\n    RetryDeadLetterResponseVO getRetryDeadLetterById(String groupName, Long id);\n\n    boolean rollback(String groupName, Long id);\n\n    boolean deleteById(String groupName, Long id);\n}"
+  },
+  "after_class": {
+    "name": "RetryDeadLetterService",
+    "code": "public interface RetryDeadLetterService {\n\n    PageResult<List<RetryDeadLetterResponseVO>> getRetryDeadLetterPage(RetryDeadLetterQueryVO queryVO);\n\n    RetryDeadLetterResponseVO getRetryDeadLetterById(String groupName, Long id);\n\n    boolean rollback(BatchRollBackRetryDeadLetterVO rollBackRetryDeadLetterVO);\n\n    boolean batchDelete(BatchDeleteRetryDeadLetterVO deadLetterVO);\n}"
+  },
+  "before_function": "boolean deleteById(String groupName, Long id);",
+  "after_function": "boolean batchDelete(BatchDeleteRetryDeadLetterVO deadLetterVO);"
+}

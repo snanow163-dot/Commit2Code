@@ -1,0 +1,17 @@
+{
+  "SHA": "2a18fbc9441fd0df86243bb2bbeffe3d259b53b3",
+  "type": "Rename Method",
+  "path": "snail-job-client/snail-job-client-common/src/main/java/com/aizuda/snailjob/client/common/NettyClient.java",
+  "before_name": "getConfig",
+  "after_name": "syncRemoteConfig",
+  "before_class": {
+    "name": "NettyClient",
+    "code": "public interface NettyClient {\n\n    @Mapping(method = RequestMethod.GET, path = HTTP_PATH.SYNC_CONFIG)\n    Result getConfig(Integer version);\n\n    @Mapping(method = RequestMethod.GET, path = HTTP_PATH.BEAT)\n    Result beat(String mark);\n\n\n}"
+  },
+  "after_class": {
+    "name": "NettyClient",
+    "code": "public interface NettyClient {\n\n    @Mapping(method = RequestMethod.GET, path = HTTP_PATH.SYNC_CONFIG)\n    Result syncRemoteConfig();\n\n    @Mapping(method = RequestMethod.GET, path = HTTP_PATH.BEAT)\n    Result beat(String mark);\n\n\n}"
+  },
+  "before_function": "Result getConfig(Integer version);",
+  "after_function": "Result syncRemoteConfig();"
+}

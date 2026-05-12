@@ -1,0 +1,18 @@
+{
+  "SHA": "cc95bb43bb104011f7087c1c0b0a5cd8d7d0182a",
+  "type": "Move Method",
+  "left_path": "snail-job-datasource/snail-job-datasource-template/src/main/java/com/aizuda/snailjob/template/datasource/persistence/mapper/RetryTaskLogMapper.java",
+  "right_path": "snail-job-datasource/snail-job-datasource-template/src/main/java/com/aizuda/snailjob/template/datasource/persistence/mapper/RetryMapper.java",
+  "before_name": "insertBatch",
+  "after_name": "insertBatch",
+  "before_class": {
+    "name": "RetryTaskLogMapper",
+    "code": "\npublic interface RetryTaskLogMapper extends BaseMapper<RetryTaskLog> {\n\n    int insertBatch(@Param(\"list\") List<RetryTaskLog> list);\n\n    List<DashboardRetryResponseDO> selectRetryRetryTaskLogSummaryList(@Param(\"ew\") Wrapper<RetryTaskLog> wrapper);\n}"
+  },
+  "after_class": {
+    "name": "RetryMapper",
+    "code": "\npublic interface RetryMapper extends BaseMapper<Retry> {\n\n    int insertBatch(@Param(\"list\") List<Retry> list);\n\n    int updateBatchNextTriggerAtById(@Param(\"list\") List<Retry> list);\n\n}"
+  },
+  "before_function": "int insertBatch(@Param(\"list\") List<RetryTaskLog> list);",
+  "after_function": "int insertBatch(@Param(\"list\") List<Retry> list);"
+}

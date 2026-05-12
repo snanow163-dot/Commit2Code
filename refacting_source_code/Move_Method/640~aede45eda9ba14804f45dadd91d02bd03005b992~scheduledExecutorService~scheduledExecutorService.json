@@ -1,0 +1,18 @@
+{
+  "SHA": "aede45eda9ba14804f45dadd91d02bd03005b992",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/src/main/java/com/aizuda/easy/retry/server/config/ShedlockConfig.java",
+  "right_path": "easy-retry-server/src/main/java/com/aizuda/easy/retry/server/EasyRetryServerApplication.java",
+  "before_name": "scheduledExecutorService",
+  "after_name": "scheduledExecutorService",
+  "before_class": {
+    "name": "ShedlockConfig",
+    "code": "public class ShedlockConfig {\n\n//    @Bean\n//    public LockProvider lockProvider(DataSource dataSource) {\n//        return new JdbcTemplateLockProvider(\n//                JdbcTemplateLockProvider.Configuration.builder()\n//                        .withJdbcTemplate(new JdbcTemplate(dataSource))\n//                        .withTimeZone(TimeZone.getTimeZone(\"Asia/Shanghai\"))\n//                        .build()\n//        );\n//    }\n\n    @Bean\n    public TaskScheduler scheduledExecutorService() {\n        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();\n        scheduler.setPoolSize(2);\n        scheduler.setThreadNamePrefix(\"easy-retry-scheduled-thread-\");\n        return scheduler;\n    }\n}"
+  },
+  "after_class": {
+    "name": "EasyRetryServerApplication",
+    "code": "public class EasyRetryServerApplication {\n\n    @Bean\n    public TaskScheduler scheduledExecutorService() {\n        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();\n        scheduler.setPoolSize(2);\n        scheduler.setThreadNamePrefix(\"easy-retry-scheduled-thread-\");\n        return scheduler;\n    }\n\n    public static void main(String[] args) {\n        TimeZone.setDefault(TimeZone.getTimeZone(\"Asia/Shanghai\"));\n        SpringApplication.run(EasyRetryServerApplication.class, args);\n    }\n\n}"
+  },
+  "before_function": "TaskScheduler scheduledExecutorService() {\n        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();\n        scheduler.setPoolSize(2);\n        scheduler.setThreadNamePrefix(\"easy-retry-scheduled-thread-\");\n        return scheduler;\n    }",
+  "after_function": "TaskScheduler scheduledExecutorService() {\n        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();\n        scheduler.setPoolSize(2);\n        scheduler.setThreadNamePrefix(\"easy-retry-scheduled-thread-\");\n        return scheduler;\n    }"
+}

@@ -1,0 +1,63 @@
+RefactoringMiner检测报告路径: /root/workplace/reports/snail-job.json
+项目路径: /root/workplace/snail-job
+已创建重构源码存放目录: /root/workplace/Commit2Code/refacting_source_code
+[DBG]:find_codes.py:已创建 Rename Method 类型重构建源码存放目录: ./refacting_source_code/Rename_Method
+[DBG]:find_codes.py:已创建 Extract Method 类型重构建源码存放目录: ./refacting_source_code/Extract_Method
+[DBG]:find_codes.py:已创建 Move Method 类型重构建源码存放目录: ./refacting_source_code/Move_Method
+[WARN] Rename_Method.py: 后文件获取失败 snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/impl/RetryTaskLogServiceImpl.java in d252e46d76dc829cc9e87d1b0751d59aa832aed4: fatal: path 'snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/impl/RetryTaskLogServiceImpl.java' does not exist in 'd252e46d76dc829cc9e87d1b0751d59aa832aed4'
+
+[WARN] Rename_Method.py: 后文件获取失败 snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/RetryTaskLogService.java in d252e46d76dc829cc9e87d1b0751d59aa832aed4: fatal: path 'snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/RetryTaskLogService.java' does not exist in 'd252e46d76dc829cc9e87d1b0751d59aa832aed4'
+
+[WARN] Rename_Method.py: 后文件获取失败 snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/timer/TimerTask.java in 03ee9cce176cd3a7339d46737e2d02afe6863964: fatal: path 'snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/timer/TimerTask.java' does not exist in '03ee9cce176cd3a7339d46737e2d02afe6863964'
+
+[WARN] Rename_Method.py: 后文件获取失败 snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/prepare/job/AbstractJobPrePareHandler.java in 08cf9e9909c25db0ab7853022ae603267915d693: fatal: path 'snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/prepare/job/AbstractJobPrePareHandler.java' does not exist in '08cf9e9909c25db0ab7853022ae603267915d693'
+
+[WARN] Rename_Method.py: 后文件获取失败 snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/prepare/job/AbstractJobPrePareHandler.java in 08cf9e9909c25db0ab7853022ae603267915d693: fatal: path 'snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/prepare/job/AbstractJobPrePareHandler.java' does not exist in '08cf9e9909c25db0ab7853022ae603267915d693'
+
+[WARN] Rename_Method.py: 后文件获取失败 snail-job-client/snail-job-client-common/src/main/java/com/aizuda/snail/job/client/common/log/support/EasyRetryLogManager.java in 2c8a158be4dc422bcc4d84e006d3fb5c2e4a044d: fatal: path 'snail-job-client/snail-job-client-common/src/main/java/com/aizuda/snail/job/client/common/log/support/EasyRetryLogManager.java' does not exist in '2c8a158be4dc422bcc4d84e006d3fb5c2e4a044d'
+
+[WARN] Rename_Method.py: 后文件获取失败 snail-job-client/snail-job-client-retry-core/src/main/java/com/aizuda/snail/job/client/core/loader/EasyRetrySpiLoader.java in 2c8a158be4dc422bcc4d84e006d3fb5c2e4a044d: fatal: path 'snail-job-client/snail-job-client-retry-core/src/main/java/com/aizuda/snail/job/client/core/loader/EasyRetrySpiLoader.java' does not exist in '2c8a158be4dc422bcc4d84e006d3fb5c2e4a044d'
+
+[WARN] Rename_Method.py: 后文件获取失败 snail-job-client-starter/src/main/java/com/aizuda/snail/job/client/starter/SnailJobClientRetryCoreAutoConfiguration.java in 2c8a158be4dc422bcc4d84e006d3fb5c2e4a044d: fatal: path 'snail-job-client-starter/src/main/java/com/aizuda/snail/job/client/starter/SnailJobClientRetryCoreAutoConfiguration.java' does not exist in '2c8a158be4dc422bcc4d84e006d3fb5c2e4a044d'
+
+[WARN] Rename_Method.py: 后文件获取失败 snail-job-client-starter/src/main/java/com/aizuda/snail/job/client/starter/SnailJobClientRetryCoreAutoConfiguration.java in 2c8a158be4dc422bcc4d84e006d3fb5c2e4a044d: fatal: path 'snail-job-client-starter/src/main/java/com/aizuda/snail/job/client/starter/SnailJobClientRetryCoreAutoConfiguration.java' does not exist in '2c8a158be4dc422bcc4d84e006d3fb5c2e4a044d'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-client/easy-retry-client-common/src/main/java/com/aizuda/easy/retry/client/common/util/ThreadLocalLogUtil.java in 6568273d60945d776bb975268b96883b457a3615: fatal: path 'easy-retry-client/easy-retry-client-common/src/main/java/com/aizuda/easy/retry/client/common/util/ThreadLocalLogUtil.java' does not exist in '6568273d60945d776bb975268b96883b457a3615'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-client/easy-retry-client-common/src/main/java/com/aizuda/easy/retry/client/common/util/ThreadLocalLogUtil.java in 6568273d60945d776bb975268b96883b457a3615: fatal: path 'easy-retry-client/easy-retry-client-common/src/main/java/com/aizuda/easy/retry/client/common/util/ThreadLocalLogUtil.java' does not exist in '6568273d60945d776bb975268b96883b457a3615'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-client/easy-retry-client-common/src/main/java/com/aizuda/easy/retry/client/common/util/ThreadLocalLogUtil.java in 6568273d60945d776bb975268b96883b457a3615: fatal: path 'easy-retry-client/easy-retry-client-common/src/main/java/com/aizuda/easy/retry/client/common/util/ThreadLocalLogUtil.java' does not exist in '6568273d60945d776bb975268b96883b457a3615'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-common/easy-retry-common-core/src/main/java/com/aizuda/easy/retry/common/core/util/HostUtils.java in 3619ac8c7314eef2e530f8a42d69800eef7c2a4d: fatal: path 'easy-retry-common/easy-retry-common-core/src/main/java/com/aizuda/easy/retry/common/core/util/HostUtils.java' does not exist in '3619ac8c7314eef2e530f8a42d69800eef7c2a4d'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java in e2e98e03d98509e9703b357ec8a3c8e30533faeb: fatal: path 'easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java' does not exist in 'e2e98e03d98509e9703b357ec8a3c8e30533faeb'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java in e2e98e03d98509e9703b357ec8a3c8e30533faeb: fatal: path 'easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java' does not exist in 'e2e98e03d98509e9703b357ec8a3c8e30533faeb'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java in e2e98e03d98509e9703b357ec8a3c8e30533faeb: fatal: path 'easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java' does not exist in 'e2e98e03d98509e9703b357ec8a3c8e30533faeb'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/strategy/WaitStrategies.java in a9b5ba3ffd51759f061e51793652cbd72826deea: fatal: path 'easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/strategy/WaitStrategies.java' does not exist in 'a9b5ba3ffd51759f061e51793652cbd72826deea'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/strategy/WaitStrategies.java in a9b5ba3ffd51759f061e51793652cbd72826deea: fatal: path 'easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/strategy/WaitStrategies.java' does not exist in 'a9b5ba3ffd51759f061e51793652cbd72826deea'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/dispatch/DispatchService.java in 76ed394e67b342a047d886d48c5dce6d9809b9be: fatal: path 'easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/dispatch/DispatchService.java' does not exist in '76ed394e67b342a047d886d48c5dce6d9809b9be'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java in de21cdad3eae7db30519334bd38d1bbba9da57dc: fatal: path 'easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java' does not exist in 'de21cdad3eae7db30519334bd38d1bbba9da57dc'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java in de21cdad3eae7db30519334bd38d1bbba9da57dc: fatal: path 'easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java' does not exist in 'de21cdad3eae7db30519334bd38d1bbba9da57dc'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java in de21cdad3eae7db30519334bd38d1bbba9da57dc: fatal: path 'easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/lock/JdbcLockProvider.java' does not exist in 'de21cdad3eae7db30519334bd38d1bbba9da57dc'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/strategy/WaitStrategies.java in 4abccf25f8af8594a3a17f6f2aeb2be12fffebc6: fatal: path 'easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/strategy/WaitStrategies.java' does not exist in '4abccf25f8af8594a3a17f6f2aeb2be12fffebc6'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/strategy/WaitStrategies.java in 4abccf25f8af8594a3a17f6f2aeb2be12fffebc6: fatal: path 'easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/strategy/WaitStrategies.java' does not exist in '4abccf25f8af8594a3a17f6f2aeb2be12fffebc6'
+
+[WARN] Rename_Method.py: 后文件获取失败 easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/dispatch/DispatchService.java in 28b488135b68545c59f557e8306279edb7d2f11f: fatal: path 'easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/dispatch/DispatchService.java' does not exist in '28b488135b68545c59f557e8306279edb7d2f11f'
+
+尚未定义源码获取方式的重构： Add Parameter,  Modify Method Annotation,  Extract Variable,  Replace Pipeline With Loop,  Remove Attribute Annotation,  Change Parameter Type,  Remove Class Annotation,  Add Attribute Annotation,  Rename Variable,  Move Attribute,  Change Attribute Access Modifier,  Extract Class,  Change Attribute Type,  Inline Variable,  Change Return Type,  Add Parameter Modifier,  Parameterize Variable,  Remove Parameter,  Extract And Move Method,  Remove Class Modifier,  Change Type Declaration Kind,  Merge Variable,  Localize Parameter,  Merge Parameter,  Add Method Annotation,  Remove Method Modifier,  Add Attribute Modifier,  Push Down Attribute,  Rename Parameter,  Remove Parameter Modifier,  Remove Method Annotation,  Remove Parameter Annotation,  Change Variable Type,  Add Class Annotation,  Move Class,  Move And Rename Class,  Rename Class,  Split Package,  Rename Attribute,  Modify Class Annotation,  Move Code,  Move Package,  Add Class Modifier,  Modify Attribute Annotation,  Extract Superclass,  Merge Package,  Extract Attribute,  Add Parameter Annotation,  Change Method Access Modifier,  Remove Thrown Exception Type,  Pull Up Attribute,  Pull Up Method,  Split Class,  Split Parameter,  Move Source Folder,  Remove Attribute Modifier,  Move And Inline Method,  Split Conditional,  Remove Variable Modifier,  Change Thrown Exception Type,  Invert Condition,  Add Method Modifier,  Replace Variable With Attribute,  Move And Rename Method,  Extract Interface,  Modify Parameter Annotation,  Replace Generic With Diamond,  Rename Package,  Replace Anonymous With Lambda,  Merge Class,  Inline Method,  Add Thrown Exception Type,  Move And Rename Attribute,  Merge Conditional,  Split Attribute,  Merge Attribute,  Replace Loop With Pipeline,  Add Variable Modifier,  Try With Resources,  Encapsulate Attribute,  Reorder Parameter,  Push Down Method,  Replace Attribute With Variable,  Replace Conditional With Ternary,  Change Class Access Modifier,  
+
+源码提取683次
+Rename Method提取312次
+Extract Method提取147次
+Move Method提取224次
+未定义提取12206次

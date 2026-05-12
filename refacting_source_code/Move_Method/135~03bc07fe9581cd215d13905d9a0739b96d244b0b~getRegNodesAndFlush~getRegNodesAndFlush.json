@@ -1,0 +1,18 @@
+{
+  "SHA": "03bc07fe9581cd215d13905d9a0739b96d244b0b",
+  "type": "Move Method",
+  "left_path": "snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/server/ServerRpcClient.java",
+  "right_path": "snail-job-server/snail-job-server-common/src/main/java/com/aizuda/snailjob/server/common/client/CommonRpcClient.java",
+  "before_name": "getRegNodesAndFlush",
+  "after_name": "getRegNodesAndFlush",
+  "before_class": {
+    "name": "ServerRpcClient",
+    "code": "public interface ServerRpcClient {\n    @Mapping(path = GET_REG_NODES_AND_REFRESH, method = RequestMethod.POST)\n    Result<String> getRegNodesAndFlush();\n}"
+  },
+  "after_class": {
+    "name": "CommonRpcClient",
+    "code": "public interface CommonRpcClient {\n\n    @Mapping(path = SYNC_CONFIG, method = RequestMethod.POST)\n    Result syncConfig(@Body ConfigDTO configDTO);\n\n    @Mapping(path = GET_REG_NODES_AND_REFRESH, method = RequestMethod.POST)\n    Result<String> getRegNodesAndFlush();\n}"
+  },
+  "before_function": "Result<String> getRegNodesAndFlush();",
+  "after_function": "Result<String> getRegNodesAndFlush();"
+}

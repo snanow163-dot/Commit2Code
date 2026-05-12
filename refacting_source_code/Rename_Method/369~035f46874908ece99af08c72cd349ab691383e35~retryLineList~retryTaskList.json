@@ -1,0 +1,17 @@
+{
+  "SHA": "035f46874908ece99af08c72cd349ab691383e35",
+  "type": "Rename Method",
+  "path": "easy-retry-datasource/easy-retry-datasource-template/src/main/java/com/aizuda/easy/retry/template/datasource/persistence/mapper/RetrySummaryMapper.java",
+  "before_name": "retryLineList",
+  "after_name": "retryTaskList",
+  "before_class": {
+    "name": "RetrySummaryMapper",
+    "code": "public interface RetrySummaryMapper extends BaseMapper<RetrySummary> {\n\n    int insertOrUpdate(@Param(\"list\") List<RetrySummary> list);\n\n    DashboardCardResponseDO.RetryTask retryTask(@Param(\"namespaceId\") String namespaceId, @Param(\"groupNames\") List<String> groupNames);\n\n    List<DashboardCardResponseDO.RetryTask> retryTaskBarList(@Param(\"namespaceId\") String namespaceId, @Param(\"groupNames\") List<String> groupNames);\n\n    IPage<DashboardRetryLineResponseDO.Task> retryTaskList(@Param(\"namespaceId\") String namespaceId, @Param(\"groupNames\") List<String> groupNames, Page<Object> page);\n\n    List<DashboardLineResponseDO> retryLineList(@Param(\"namespaceId\") String namespaceId,\n                                                @Param(\"groupNames\") List<String> groupNames,\n                                                @Param(\"groupName\") String groupName,\n                                                @Param(\"type\") String type,\n                                                @Param(\"from\") LocalDateTime from,\n                                                @Param(\"to\") LocalDateTime to);\n\n\n    List<DashboardRetryLineResponseDO.Rank> dashboardRank(@Param(\"namespaceId\") String namespaceId,\n                                                          @Param(\"groupNames\") List<String> groupNames,\n                                                          @Param(\"groupName\") String groupName,\n                                                          @Param(\"startTime\") LocalDateTime startTime,\n                                                          @Param(\"endTime\") LocalDateTime endTime\n    );\n}"
+  },
+  "after_class": {
+    "name": "RetrySummaryMapper",
+    "code": "public interface RetrySummaryMapper extends BaseMapper<RetrySummary> {\n\n    int insertOrUpdate(@Param(\"list\") List<RetrySummary> list);\n\n    DashboardCardResponseDO.RetryTask retryTask(@Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n    List<DashboardCardResponseDO.RetryTask> retryTaskBarList(@Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n    IPage<DashboardRetryLineResponseDO.Task> retryTaskList(@Param(\"ew\") Wrapper<SceneConfig> wrapper, Page<Object> page);\n\n    List<DashboardLineResponseDO> retryLineList(@Param(\"ew\") Wrapper<RetrySummary> wrapper);\n\n    List<DashboardRetryLineResponseDO.Rank> dashboardRank(@Param(\"ew\") Wrapper<RetrySummary> wrapper);\n}"
+  },
+  "before_function": "List<DashboardLineResponseDO> retryLineList(@Param(\"namespaceId\") String namespaceId,\n                                                @Param(\"groupNames\") List<String> groupNames,\n                                                @Param(\"groupName\") String groupName,\n                                                @Param(\"type\") String type,\n                                                @Param(\"from\") LocalDateTime from,\n                                                @Param(\"to\") LocalDateTime to);",
+  "after_function": "IPage<DashboardRetryLineResponseDO.Task> retryTaskList(@Param(\"ew\") Wrapper<SceneConfig> wrapper, Page<Object> page);"
+}

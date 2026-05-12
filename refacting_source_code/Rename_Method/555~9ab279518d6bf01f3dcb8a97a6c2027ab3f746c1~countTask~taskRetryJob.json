@@ -1,0 +1,17 @@
+{
+  "SHA": "9ab279518d6bf01f3dcb8a97a6c2027ab3f746c1",
+  "type": "Rename Method",
+  "path": "easy-retry-server/easy-retry-server-web/src/main/java/com/aizuda/easy/retry/server/web/service/DashBoardService.java",
+  "before_name": "countTask",
+  "after_name": "taskRetryJob",
+  "before_class": {
+    "name": "DashBoardService",
+    "code": "public interface DashBoardService {\n\n    TaskQuantityResponseVO countTask();\n\n    DispatchQuantityResponseVO countDispatch();\n\n    ActivePodQuantityResponseVO countActivePod();\n\n    List<SceneQuantityRankResponseVO> rankSceneQuantity(String groupName, String type, String startTime, String endTime);\n\n    List<DispatchQuantityResponseVO> lineDispatchQuantity(String groupName, String type, String startTime, String endTime);\n\n    PageResult<List<ServerNodeResponseVO>> pods(ServerNodeQueryVO serverNodeQueryVO);\n}"
+  },
+  "after_class": {
+    "name": "DashBoardService",
+    "code": "public interface DashBoardService {\n\n    DashboardCardResponseVO taskRetryJob();\n\n    DashboardRetryLineResponseVO retryLineList(BaseQueryVO baseQueryVO, String groupName, String type, String startTime, String endTime);\n\n    DashboardRetryLineResponseVO jobLineList(BaseQueryVO baseQueryVO, String groupName, String type, String startTime, String endTime);\n\n    PageResult<List<ServerNodeResponseVO>> pods(ServerNodeQueryVO serverNodeQueryVO);\n}"
+  },
+  "before_function": "TaskQuantityResponseVO countTask();",
+  "after_function": "DashboardCardResponseVO taskRetryJob();"
+}

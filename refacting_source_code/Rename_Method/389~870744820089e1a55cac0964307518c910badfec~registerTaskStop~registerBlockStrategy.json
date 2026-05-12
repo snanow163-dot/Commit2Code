@@ -1,0 +1,17 @@
+{
+  "SHA": "870744820089e1a55cac0964307518c910badfec",
+  "type": "Rename Method",
+  "path": "easy-retry-server/easy-retry-server-job-task/src/main/java/com/aizuda/easy/retry/server/job/task/support/block/workflow/WorkflowBlockStrategyFactory.java",
+  "before_name": "registerTaskStop",
+  "after_name": "registerBlockStrategy",
+  "before_class": {
+    "name": "WorkflowBlockStrategyFactory",
+    "code": "public final class WorkflowBlockStrategyFactory {\n    private static final ConcurrentHashMap<BlockStrategyEnum, BlockStrategy> CACHE = new ConcurrentHashMap<>();\n\n    private WorkflowBlockStrategyFactory() {\n    }\n\n    protected static void registerTaskStop(BlockStrategyEnum blockStrategyEnum, BlockStrategy blockStrategy) {\n        CACHE.put(blockStrategyEnum, blockStrategy);\n    }\n\n    public static BlockStrategy getJobTaskStop(Integer  blockStrategy) {\n        return CACHE.get(BlockStrategyEnum.valueOf(blockStrategy));\n    }\n\n}"
+  },
+  "after_class": {
+    "name": "WorkflowBlockStrategyFactory",
+    "code": "public final class WorkflowBlockStrategyFactory {\n    private static final ConcurrentHashMap<BlockStrategyEnum, BlockStrategy> CACHE = new ConcurrentHashMap<>();\n\n    private WorkflowBlockStrategyFactory() {\n    }\n\n    static void registerBlockStrategy(BlockStrategyEnum blockStrategyEnum, BlockStrategy blockStrategy) {\n        CACHE.put(blockStrategyEnum, blockStrategy);\n    }\n\n    public static BlockStrategy getBlockStrategy(Integer  blockStrategy) {\n        return CACHE.get(BlockStrategyEnum.valueOf(blockStrategy));\n    }\n\n}"
+  },
+  "before_function": "void registerTaskStop(BlockStrategyEnum blockStrategyEnum, BlockStrategy blockStrategy) {\n        CACHE.put(blockStrategyEnum, blockStrategy);\n    }",
+  "after_function": "void registerBlockStrategy(BlockStrategyEnum blockStrategyEnum, BlockStrategy blockStrategy) {\n        CACHE.put(blockStrategyEnum, blockStrategy);\n    }"
+}

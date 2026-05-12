@@ -1,0 +1,17 @@
+{
+  "SHA": "4916fad455e36ebbea59ad5ab13d78fd5d785fb5",
+  "type": "Rename Method",
+  "path": "easy-retry-common/easy-retry-common-core/src/main/java/com/aizuda/easy/retry/common/core/model/EasyRetryRequest.java",
+  "before_name": "generateRequestId",
+  "after_name": "newId",
+  "before_class": {
+    "name": "EasyRetryRequest",
+    "code": "public class EasyRetryRequest {\n\n   private String requestId;\n\n   private Object[] args;\n\n   public EasyRetryRequest(Object... args) {\n      this.args = args;\n      this.requestId = generateRequestId();\n   }\n\n   public EasyRetryRequest() {\n\n   }\n\n   public String generateRequestId() {\n      return UUID.randomUUID().toString();\n   }\n\n}"
+  },
+  "after_class": {
+    "name": "EasyRetryRequest",
+    "code": "public class EasyRetryRequest {\n\n   private static final AtomicLong REQUEST_ID = new AtomicLong(0);\n\n   private long reqId;\n\n   private Object[] args;\n\n   public EasyRetryRequest(Object... args) {\n      this.args = args;\n      this.reqId = newId();\n   }\n\n   private static long newId() {\n      return REQUEST_ID.getAndIncrement();\n   }\n\n   public EasyRetryRequest() {\n   }\n\n   @Override\n   public String toString() {\n      return JsonUtil.toJsonString(this);\n   }\n}"
+  },
+  "before_function": "String generateRequestId() {\n      return UUID.randomUUID().toString();\n   }",
+  "after_function": "long newId() {\n      return REQUEST_ID.getAndIncrement();\n   }"
+}

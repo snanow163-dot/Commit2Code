@@ -1,0 +1,17 @@
+{
+  "SHA": "c37c1ae6851c82b6a7ac9155a49fa82beb8f0c6c",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/SceneConfigConverter.java",
+  "before_name": "convert",
+  "after_name": "toRetrySceneConfig",
+  "before_class": {
+    "name": "SceneConfigConverter",
+    "code": "public interface SceneConfigConverter {\n\n    SceneConfigConverter INSTANCE = Mappers.getMapper(SceneConfigConverter.class);\n\n    RetrySceneConfig convert(SceneConfigRequestVO requestVO);\n\n}"
+  },
+  "after_class": {
+    "name": "SceneConfigConverter",
+    "code": "public interface SceneConfigConverter {\n\n    SceneConfigConverter INSTANCE = Mappers.getMapper(SceneConfigConverter.class);\n\n    RetrySceneConfig toRetrySceneConfig(SceneConfigRequestVO requestVO);\n\n    List<RetrySceneConfig> toRetrySceneConfigs(List<SceneConfigRequestVO> requestVOs);\n\n    List<SceneConfigRequestVO> toSceneConfigRequestVOs(List<RetrySceneConfig> requestVOs);\n\n\n}"
+  },
+  "before_function": "RetrySceneConfig convert(SceneConfigRequestVO requestVO);",
+  "after_function": "RetrySceneConfig toRetrySceneConfig(SceneConfigRequestVO requestVO);"
+}

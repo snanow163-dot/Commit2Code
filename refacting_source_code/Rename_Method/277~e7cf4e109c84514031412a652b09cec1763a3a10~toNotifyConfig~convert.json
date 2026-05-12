@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/NotifyConfigConverter.java",
+  "before_name": "toNotifyConfig",
+  "after_name": "convert",
+  "before_class": {
+    "name": "NotifyConfigConverter",
+    "code": "public interface NotifyConfigConverter {\n\n    NotifyConfigConverter INSTANCE = Mappers.getMapper(NotifyConfigConverter.class);\n\n    static String toNotifyRecipientIdsStr(Set<Long> notifyRecipientIds) {\n        if (CollectionUtils.isEmpty(notifyRecipientIds)) {\n            return null;\n        }\n\n        return JsonUtil.toJsonString(notifyRecipientIds);\n    }\n\n    @Mappings({\n        @Mapping(target = \"recipientIds\", expression = \"java(NotifyConfigConverter.toNotifyRecipientIdsStr(notifyConfigVO.getRecipientIds()))\")\n    })\n    NotifyConfig toNotifyConfig(NotifyConfigRequestVO notifyConfigVO);\n}"
+  },
+  "after_class": {
+    "name": "NotifyConfigConverter",
+    "code": "public interface NotifyConfigConverter {\n\n    NotifyConfigConverter INSTANCE = Mappers.getMapper(NotifyConfigConverter.class);\n\n    static String toNotifyRecipientIdsStr(Set<Long> notifyRecipientIds) {\n        if (CollectionUtils.isEmpty(notifyRecipientIds)) {\n            return null;\n        }\n\n        return JsonUtil.toJsonString(notifyRecipientIds);\n    }\n\n    @Mappings({\n        @Mapping(target = \"recipientIds\", expression = \"java(NotifyConfigConverter.toNotifyRecipientIdsStr(notifyConfigVO.getRecipientIds()))\")\n    })\n    NotifyConfig convert(NotifyConfigRequestVO notifyConfigVO);\n}"
+  },
+  "before_function": "NotifyConfig toNotifyConfig(NotifyConfigRequestVO notifyConfigVO);",
+  "after_function": "NotifyConfig convert(NotifyConfigRequestVO notifyConfigVO);"
+}

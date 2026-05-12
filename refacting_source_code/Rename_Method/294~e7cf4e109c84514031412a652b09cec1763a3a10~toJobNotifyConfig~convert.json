@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/JobNotifyConfigConverter.java",
+  "before_name": "toJobNotifyConfig",
+  "after_name": "convert",
+  "before_class": {
+    "name": "JobNotifyConfigConverter",
+    "code": "public interface JobNotifyConfigConverter {\n\n    JobNotifyConfigConverter INSTANCE = Mappers.getMapper(JobNotifyConfigConverter.class);\n\n    JobNotifyConfig toJobNotifyConfig(JobNotifyConfigRequestVO jobNotifyConfigVO);\n}"
+  },
+  "after_class": {
+    "name": "JobNotifyConfigConverter",
+    "code": "public interface JobNotifyConfigConverter {\n\n    JobNotifyConfigConverter INSTANCE = Mappers.getMapper(JobNotifyConfigConverter.class);\n\n    JobNotifyConfig convert(JobNotifyConfigRequestVO jobNotifyConfigVO);\n}"
+  },
+  "before_function": "JobNotifyConfig toJobNotifyConfig(JobNotifyConfigRequestVO jobNotifyConfigVO);",
+  "after_function": "JobNotifyConfig convert(JobNotifyConfigRequestVO jobNotifyConfigVO);"
+}

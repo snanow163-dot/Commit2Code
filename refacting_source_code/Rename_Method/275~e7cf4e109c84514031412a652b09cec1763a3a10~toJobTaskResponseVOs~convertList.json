@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/JobTaskResponseVOConverter.java",
+  "before_name": "toJobTaskResponseVOs",
+  "after_name": "convertList",
+  "before_class": {
+    "name": "JobTaskResponseVOConverter",
+    "code": "public interface JobTaskResponseVOConverter {\n\n    JobTaskResponseVOConverter INSTANCE = Mappers.getMapper(JobTaskResponseVOConverter.class);\n\n    @Mappings(\n            @Mapping(source = \"id\", target = \"key\")\n    )\n    List<JobTaskResponseVO> toJobTaskResponseVOs(List<JobTask> jobTasks);\n}"
+  },
+  "after_class": {
+    "name": "JobTaskResponseVOConverter",
+    "code": "public interface JobTaskResponseVOConverter {\n\n    JobTaskResponseVOConverter INSTANCE = Mappers.getMapper(JobTaskResponseVOConverter.class);\n\n    @Mappings(\n            @Mapping(source = \"id\", target = \"key\")\n    )\n    List<JobTaskResponseVO> convertList(List<JobTask> jobTasks);\n}"
+  },
+  "before_function": "List<JobTaskResponseVO> toJobTaskResponseVOs(List<JobTask> jobTasks);",
+  "after_function": "List<JobTaskResponseVO> convertList(List<JobTask> jobTasks);"
+}

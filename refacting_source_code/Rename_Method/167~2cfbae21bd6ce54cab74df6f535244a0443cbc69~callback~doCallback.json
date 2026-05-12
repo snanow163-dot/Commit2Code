@@ -1,0 +1,17 @@
+{
+  "SHA": "2cfbae21bd6ce54cab74df6f535244a0443cbc69",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/callback/MapClientCallbackHandler.java",
+  "before_name": "callback",
+  "after_name": "doCallback",
+  "before_class": {
+    "name": "MapClientCallbackHandler",
+    "code": "public class MapClientCallbackHandler extends MapReduceClientCallbackHandler {\n    public MapClientCallbackHandler(JobTaskMapper jobTaskMapper) {\n        super(jobTaskMapper);\n    }\n\n    @Override\n    public JobTaskTypeEnum getTaskInstanceType() {\n        return JobTaskTypeEnum.MAP;\n    }\n\n    @Override\n    public void callback(ClientCallbackContext context) {\n        super.doCallback(context);\n    }\n}"
+  },
+  "after_class": {
+    "name": "MapClientCallbackHandler",
+    "code": "public class MapClientCallbackHandler extends MapReduceClientCallbackHandler {\n    public MapClientCallbackHandler(JobTaskMapper jobTaskMapper) {\n        super(jobTaskMapper);\n    }\n\n    @Override\n    public JobTaskTypeEnum getTaskInstanceType() {\n        return JobTaskTypeEnum.MAP;\n    }\n\n    @Override\n    protected void doCallback(ClientCallbackContext context) {\n        super.doCallback(context);\n    }\n}"
+  },
+  "before_function": "void callback(ClientCallbackContext context) {\n        super.doCallback(context);\n    }",
+  "after_function": "void doCallback(ClientCallbackContext context) {\n        super.doCallback(context);\n    }"
+}

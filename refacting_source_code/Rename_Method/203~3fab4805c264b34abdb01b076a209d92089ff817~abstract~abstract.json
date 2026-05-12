@@ -1,0 +1,17 @@
+{
+  "SHA": "3fab4805c264b34abdb01b076a209d92089ff817",
+  "type": "Rename Method",
+  "path": "snail-job-client/snail-job-client-job-core/src/main/java/com/aizuda/snailjob/client/job/core/executor/AbstractMapExecutor.java",
+  "before_name": "abstract",
+  "after_name": "abstract",
+  "before_class": {
+    "name": null,
+    "code": null
+  },
+  "after_class": {
+    "name": null,
+    "code": null
+  },
+  "before_function": null,
+  "after_function": null
+}

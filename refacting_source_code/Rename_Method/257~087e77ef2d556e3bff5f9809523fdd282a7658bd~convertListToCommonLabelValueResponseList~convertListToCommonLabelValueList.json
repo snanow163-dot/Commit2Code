@@ -1,0 +1,17 @@
+{
+  "SHA": "087e77ef2d556e3bff5f9809523fdd282a7658bd",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/NotifyRecipientConverter.java",
+  "before_name": "convertListToCommonLabelValueResponseList",
+  "after_name": "convertListToCommonLabelValueList",
+  "before_class": {
+    "name": "NotifyRecipientConverter",
+    "code": "public interface NotifyRecipientConverter {\n\n    NotifyRecipientConverter INSTANCE = Mappers.getMapper(NotifyRecipientConverter.class);\n\n    List<NotifyRecipientResponseVO> convertList(List<NotifyRecipient> notifyRecipients);\n\n    NotifyRecipient convert(NotifyRecipientRequestVO requestVO);\n\n    List<CommonLabelValueResponseVO> convertListToCommonLabelValueResponseList(List<NotifyRecipient> notifyRecipients);\n\n    @Mappings({\n        @Mapping(target = \"label\", source = \"recipientName\"),\n        @Mapping(target = \"value\", source = \"id\")\n    })\n    CommonLabelValueResponseVO convert(NotifyRecipient notifyRecipient);\n}"
+  },
+  "after_class": {
+    "name": "NotifyRecipientConverter",
+    "code": "public interface NotifyRecipientConverter {\n\n    NotifyRecipientConverter INSTANCE = Mappers.getMapper(NotifyRecipientConverter.class);\n\n    List<NotifyRecipientResponseVO> convertList(List<NotifyRecipient> notifyRecipients);\n\n    NotifyRecipient convert(NotifyRecipientRequestVO requestVO);\n\n    List<CommonLabelValueResponseVO> convertListToCommonLabelValueList(List<NotifyRecipient> notifyRecipients);\n\n    @Mappings({\n        @Mapping(target = \"label\", source = \"recipientName\"),\n        @Mapping(target = \"value\", source = \"id\")\n    })\n    CommonLabelValueResponseVO convert(NotifyRecipient notifyRecipient);\n}"
+  },
+  "before_function": "List<CommonLabelValueResponseVO> convertListToCommonLabelValueResponseList(List<NotifyRecipient> notifyRecipients);",
+  "after_function": "List<CommonLabelValueResponseVO> convertListToCommonLabelValueList(List<NotifyRecipient> notifyRecipients);"
+}

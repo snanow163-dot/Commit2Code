@@ -1,0 +1,18 @@
+{
+  "SHA": "28b488135b68545c59f557e8306279edb7d2f11f",
+  "type": "Move Method",
+  "left_path": "easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/cache/CacheGroup.java",
+  "right_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/cache/CacheBucketActor.java",
+  "before_name": "start",
+  "after_name": "start",
+  "before_class": {
+    "name": "CacheGroup",
+    "code": "public class CacheGroup implements Lifecycle {\n\n    private static Cache<String/*groupName*/, String/*groupName*/> CACHE;\n\n    /**\n     * 获取所有缓存\n     *\n     * @return 缓存对象\n     */\n    public static Set<String> getAllGroup() {\n        ConcurrentMap<String, String> concurrentMap = CACHE.asMap();\n        if (CollectionUtils.isEmpty(concurrentMap)) {\n            return Collections.EMPTY_SET;\n        }\n\n        return new TreeSet<>(concurrentMap.values());\n\n    }\n\n    /**\n     * 获取所有缓存\n     *\n     * @return 缓存对象\n     */\n    public static String get(String hostId) {\n        return CACHE.getIfPresent(hostId);\n    }\n\n    /**\n     * 无缓存时添加\n     * 有缓存时更新\n     *\n     * @return 缓存对象\n     */\n    public static synchronized void addOrUpdate(String groupName) {\n        CACHE.put(groupName, groupName);\n    }\n\n    public static void remove(String groupName) {\n        CACHE.invalidate(groupName);\n    }\n\n    @Override\n    public void start() {\n        LogUtils.info(log, \"CacheGroup start\");\n        CACHE = CacheBuilder.newBuilder()\n            // 设置并发级别为cpu核心数\n            .concurrencyLevel(Runtime.getRuntime().availableProcessors())\n            .build();\n    }\n\n    @Override\n    public void close() {\n        LogUtils.info(log, \"CacheGroup stop\");\n        CACHE.invalidateAll();\n    }\n}"
+  },
+  "after_class": {
+    "name": "CacheBucketActor",
+    "code": "public class CacheBucketActor implements Lifecycle {\n\n    private static Cache<Integer, ActorRef> CACHE;\n\n    /**\n     * 获取所有缓存\n     *\n     * @return 缓存对象\n     */\n    public static ActorRef get(Integer bucket) {\n       return CACHE.getIfPresent(bucket);\n    }\n\n    /**\n     * 获取所有缓存\n     *\n     * @return 缓存对象\n     */\n    public static void put(Integer bucket, ActorRef actorRef) {\n         CACHE.put(bucket, actorRef);\n    }\n\n    @Override\n    public void start() {\n        LogUtils.info(log, \"CacheGroupScanActor start\");\n        CACHE = CacheBuilder.newBuilder()\n                // 设置并发级别为cpu核心数\n                .concurrencyLevel(Runtime.getRuntime().availableProcessors())\n                .build();\n    }\n\n    @Override\n    public void close() {\n        LogUtils.info(log, \"CacheGroupScanActor stop\");\n        CACHE.invalidateAll();\n    }\n}"
+  },
+  "before_function": "void start() {\n        LogUtils.info(log, \"CacheGroup start\");\n        CACHE = CacheBuilder.newBuilder()\n            // 设置并发级别为cpu核心数\n            .concurrencyLevel(Runtime.getRuntime().availableProcessors())\n            .build();\n    }",
+  "after_function": "void start() {\n        LogUtils.info(log, \"CacheGroupScanActor start\");\n        CACHE = CacheBuilder.newBuilder()\n                // 设置并发级别为cpu核心数\n                .concurrencyLevel(Runtime.getRuntime().availableProcessors())\n                .build();\n    }"
+}

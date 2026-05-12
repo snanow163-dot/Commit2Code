@@ -1,0 +1,17 @@
+{
+  "SHA": "035f46874908ece99af08c72cd349ab691383e35",
+  "type": "Rename Method",
+  "path": "easy-retry-datasource/easy-retry-datasource-template/src/main/java/com/aizuda/easy/retry/template/datasource/persistence/mapper/JobSummaryMapper.java",
+  "before_name": "jobTaskList",
+  "after_name": "jobLineList",
+  "before_class": {
+    "name": "JobSummaryMapper",
+    "code": "public interface JobSummaryMapper extends BaseMapper<JobSummary> {\n\n    int insertOrUpdate(@Param(\"list\") List<JobSummary> list);\n\n    IPage<DashboardRetryLineResponseDO.Task> jobTaskList(@Param(\"namespaceId\") String namespaceId, @Param(\"groupNames\") List<String> groupNames, Page<Object> page);\n\n    List<DashboardLineResponseDO> jobLineList(\n            @Param(\"systemTaskType\") Integer systemTaskType,\n            @Param(\"namespaceId\") String namespaceId,\n            @Param(\"groupNames\") List<String> groupNames,\n            @Param(\"groupName\") String groupName,\n            @Param(\"dateFormat\") String dateFormat,\n            @Param(\"from\") LocalDateTime from,\n            @Param(\"to\") LocalDateTime to);\n\n    List<DashboardRetryLineResponseDO.Rank> dashboardRank(\n            @Param(\"systemTaskType\") Integer systemTaskType,\n            @Param(\"namespaceId\") String namespaceId,\n            @Param(\"groupNames\") List<String> groupNames,\n            @Param(\"groupName\") String groupName,\n            @Param(\"startTime\") LocalDateTime startTime,\n            @Param(\"endTime\") LocalDateTime endTime\n    );\n\n    DashboardCardResponseDO.JobTask toJobTask(@Param(\"systemTaskType\") Integer systemTaskType, @Param(\"namespaceId\") String namespaceId, @Param(\"groupNames\") List<String> groupNames);\n}"
+  },
+  "after_class": {
+    "name": "JobSummaryMapper",
+    "code": "public interface JobSummaryMapper extends BaseMapper<JobSummary> {\n\n    int insertOrUpdate(@Param(\"list\") List<JobSummary> list);\n\n    IPage<DashboardRetryLineResponseDO.Task> jobTaskList(@Param(\"ew\") Wrapper<Job> wrapper, Page<Object> page);\n\n    List<DashboardLineResponseDO> jobLineList(@Param(\"ew\") Wrapper<JobSummary> wrapper);\n\n    List<DashboardRetryLineResponseDO.Rank> dashboardRank(@Param(\"ew\") Wrapper<JobSummary> wrapper);\n\n    DashboardCardResponseDO.JobTask toJobTask(@Param(\"ew\") Wrapper<JobSummary> wrapper);\n}"
+  },
+  "before_function": "IPage<DashboardRetryLineResponseDO.Task> jobTaskList(@Param(\"namespaceId\") String namespaceId, @Param(\"groupNames\") List<String> groupNames, Page<Object> page);",
+  "after_function": "List<DashboardLineResponseDO> jobLineList(@Param(\"ew\") Wrapper<JobSummary> wrapper);"
+}

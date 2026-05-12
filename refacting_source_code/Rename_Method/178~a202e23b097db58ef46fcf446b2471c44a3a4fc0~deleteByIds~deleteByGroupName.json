@@ -1,0 +1,17 @@
+{
+  "SHA": "a202e23b097db58ef46fcf446b2471c44a3a4fc0",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/GroupConfigService.java",
+  "before_name": "deleteByIds",
+  "after_name": "deleteByGroupName",
+  "before_class": {
+    "name": "GroupConfigService",
+    "code": "public interface GroupConfigService {\n\n    Boolean addGroup(GroupConfigRequestVO groupConfigRequestVO);\n\n    Boolean updateGroup(GroupConfigRequestVO groupConfigRequestVO);\n\n    Boolean updateGroupStatus(String groupName, Integer status);\n\n    PageResult<List<GroupConfigResponseVO>> getGroupConfigForPage(GroupConfigQueryVO queryVO);\n\n    GroupConfigResponseVO getGroupConfigByGroupName(String groupName);\n\n    List<GroupConfigResponseVO> getAllGroupConfigList(final List<String> namespaceId);\n\n    List<String> getAllGroupNameList();\n\n    List<String> getOnlinePods(String groupName);\n\n    List<Integer> getTablePartitionList();\n\n    void importGroup(@Valid @NotEmpty(message = \"导入数据不能为空\") List<GroupConfigRequestVO> requestVOS);\n\n    String exportGroup(ExportGroupVO exportGroupVO);\n\n    boolean deleteByIds(Long id);\n}"
+  },
+  "after_class": {
+    "name": "GroupConfigService",
+    "code": "public interface GroupConfigService {\n\n    Boolean addGroup(GroupConfigRequestVO groupConfigRequestVO);\n\n    Boolean updateGroup(GroupConfigRequestVO groupConfigRequestVO);\n\n    Boolean updateGroupStatus(String groupName, Integer status);\n\n    PageResult<List<GroupConfigResponseVO>> getGroupConfigForPage(GroupConfigQueryVO queryVO);\n\n    GroupConfigResponseVO getGroupConfigByGroupName(String groupName);\n\n    List<GroupConfigResponseVO> getAllGroupConfigList(final List<String> namespaceId);\n\n    List<String> getAllGroupNameList();\n\n    List<String> getOnlinePods(String groupName);\n\n    List<Integer> getTablePartitionList();\n\n    void importGroup(@Valid @NotEmpty(message = \"导入数据不能为空\") List<GroupConfigRequestVO> requestVOS);\n\n    String exportGroup(ExportGroupVO exportGroupVO);\n\n    boolean deleteByGroupName(String groupName);\n}"
+  },
+  "before_function": "boolean deleteByIds(Long id);",
+  "after_function": "boolean deleteByGroupName(String groupName);"
+}

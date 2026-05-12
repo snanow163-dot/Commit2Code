@@ -1,0 +1,17 @@
+{
+  "SHA": "a202e23b097db58ef46fcf446b2471c44a3a4fc0",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/JobBatchService.java",
+  "before_name": "deleteJobBatchById",
+  "after_name": "deleteJobBatchByIds",
+  "before_class": {
+    "name": "JobBatchService",
+    "code": "public interface JobBatchService {\n\n    PageResult<List<JobBatchResponseVO>> getJobBatchPage(JobBatchQueryVO jobQueryVO);\n\n    JobBatchResponseVO getJobBatchDetail(Long id);\n\n    boolean stop(Long taskBatchId);\n\n    Boolean retry(Long taskBatchId);\n\n    Boolean deleteJobBatchById(Set<Long> ids);\n}"
+  },
+  "after_class": {
+    "name": "JobBatchService",
+    "code": "public interface JobBatchService {\n\n    PageResult<List<JobBatchResponseVO>> getJobBatchPage(JobBatchQueryVO jobQueryVO);\n\n    JobBatchResponseVO getJobBatchDetail(Long id);\n\n    boolean stop(Long taskBatchId);\n\n    Boolean retry(Long taskBatchId);\n\n    Boolean deleteJobBatchByIds(Set<Long> ids);\n}"
+  },
+  "before_function": "Boolean deleteJobBatchById(Set<Long> ids);",
+  "after_function": "Boolean deleteJobBatchByIds(Set<Long> ids);"
+}

@@ -1,0 +1,17 @@
+{
+  "SHA": "a5ea2a6651cb85604ab3fada5f0edbb14be0e272",
+  "type": "Rename Method",
+  "path": "easy-retry-server/easy-retry-server-common/src/main/java/com/aizuda/easy/retry/server/common/client/RpcClient.java",
+  "before_name": "interrupt",
+  "after_name": "stop",
+  "before_class": {
+    "name": "RpcClient",
+    "code": "public interface RpcClient {\n\n    @Mapping(path = \"/retry/dispatch/v1\", method = RequestMethod.POST)\n    Result<DispatchRetryResultDTO> dispatch(@Body DispatchRetryDTO dispatchRetryDTO, @Header EasyRetryHeaders headers);\n\n    @Mapping(path = \"/retry/callback/v1\", method = RequestMethod.POST)\n    Result callback(@Body RetryCallbackDTO retryCallbackDTO);\n\n    @Mapping(path = \"/job/interrupt/v1\", method = RequestMethod.POST)\n    Result<Boolean> interrupt(@Body InterruptJobDTO interruptJobDTO);\n\n    @Mapping(path = \"/job/dispatch/v1\", method = RequestMethod.POST)\n    Result dispatch(@Body DispatchJobDTO dispatchJobDTO);\n\n}"
+  },
+  "after_class": {
+    "name": "RpcClient",
+    "code": "public interface RpcClient {\n\n    @Mapping(path = \"/retry/dispatch/v1\", method = RequestMethod.POST)\n    Result<DispatchRetryResultDTO> dispatch(@Body DispatchRetryDTO dispatchRetryDTO, @Header EasyRetryHeaders headers);\n\n    @Mapping(path = \"/retry/callback/v1\", method = RequestMethod.POST)\n    Result callback(@Body RetryCallbackDTO retryCallbackDTO);\n\n    @Mapping(path = \"/job/stop/v1\", method = RequestMethod.POST)\n    Result<Boolean> stop(@Body StopJobDTO stopJobDTO);\n\n    @Mapping(path = \"/job/dispatch/v1\", method = RequestMethod.POST)\n    Result<Boolean> dispatch(@Body DispatchJobRequest dispatchJobRequest);\n\n}"
+  },
+  "before_function": "Result<Boolean> interrupt(@Body InterruptJobDTO interruptJobDTO);",
+  "after_function": "Result<Boolean> stop(@Body StopJobDTO stopJobDTO);"
+}

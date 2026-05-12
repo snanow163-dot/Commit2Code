@@ -1,0 +1,17 @@
+{
+  "SHA": "875f7d5cf3e50dfdb3fbef2dac2346c04ca22c7d",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-common/src/main/java/com/aizuda/snailjob/server/common/client/CommonRpcClient.java",
+  "before_name": "getRegNodesAndFlush",
+  "after_name": "pullRemoteNodeClientRegisterInfo",
+  "before_class": {
+    "name": "CommonRpcClient",
+    "code": "public interface CommonRpcClient {\n\n    @Mapping(path = SYNC_CONFIG, method = RequestMethod.POST)\n    Result syncConfig(@Body ConfigDTO configDTO);\n\n    @Mapping(path = GET_REG_NODES_AND_REFRESH, method = RequestMethod.POST)\n    Result<String> getRegNodesAndFlush();\n}"
+  },
+  "after_class": {
+    "name": "CommonRpcClient",
+    "code": "public interface CommonRpcClient {\n\n    @Mapping(path = SYNC_CONFIG, method = RequestMethod.POST)\n    Result syncConfig(@Body ConfigDTO configDTO);\n\n    @Mapping(path = GET_REG_NODES_AND_REFRESH, method = RequestMethod.POST)\n    Result<String> pullRemoteNodeClientRegisterInfo(@Body PullRemoteNodeClientRegisterInfoDTO registerInfo);\n}"
+  },
+  "before_function": "Result<String> getRegNodesAndFlush();",
+  "after_function": "Result<String> pullRemoteNodeClientRegisterInfo(@Body PullRemoteNodeClientRegisterInfoDTO registerInfo);"
+}

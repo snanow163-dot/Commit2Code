@@ -1,0 +1,8 @@
+refactoringminer_report:
+#  path: "/root/workplace/reports/Render.json"
+ path: "/root/workplace/reports/snail-job.json"
+
+
+github_project:
+#  path: "/root/workplace/Renderer"
+ path: "/root/workplace/snail-job"

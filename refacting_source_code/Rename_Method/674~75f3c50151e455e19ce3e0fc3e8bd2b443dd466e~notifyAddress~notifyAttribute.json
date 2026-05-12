@@ -1,0 +1,17 @@
+{
+  "SHA": "75f3c50151e455e19ce3e0fc3e8bd2b443dd466e",
+  "type": "Rename Method",
+  "path": "x-retry-common/x-retry-common-core/src/main/java/com/x/retry/common/core/alarm/AlarmContext.java",
+  "before_name": "notifyAddress",
+  "after_name": "notifyAttribute",
+  "before_class": {
+    "name": "AlarmContext",
+    "code": "public class AlarmContext {\n\n    private String text;\n\n    private String title;\n\n    private String notifyAddress;\n\n    public AlarmContext text(String pattern, Object ...arguments) {\n        this.text = MessageFormatter.arrayFormat(pattern, arguments).getMessage();\n        return this;\n    }\n\n    public AlarmContext text(String text) {\n        this.text = text;\n        return this;\n    }\n\n    public AlarmContext notifyAddress(String notifyAddress) {\n        this.notifyAddress = notifyAddress;\n        return this;\n    }\n\n    public AlarmContext title(String pattern, Object ... arguments) {\n        this.title = MessageFormatter.arrayFormat(pattern, arguments).getMessage();\n        return this;\n    }\n\n    public AlarmContext title(String title) {\n        this.title = title;\n        return this;\n    }\n\n    public static AlarmContext build() {\n        return new AlarmContext();\n    }\n\n\n}"
+  },
+  "after_class": {
+    "name": "AlarmContext",
+    "code": "public class AlarmContext {\n\n    private String text;\n\n    private String title;\n\n    private String notifyAttribute;\n\n    public AlarmContext text(String pattern, Object ...arguments) {\n        this.text = MessageFormatter.arrayFormat(pattern, arguments).getMessage();\n        return this;\n    }\n\n    public AlarmContext text(String text) {\n        this.text = text;\n        return this;\n    }\n\n    public AlarmContext notifyAttribute(String notifyAttribute) {\n        this.notifyAttribute = notifyAttribute;\n        return this;\n    }\n\n    public AlarmContext title(String pattern, Object ... arguments) {\n        this.title = MessageFormatter.arrayFormat(pattern, arguments).getMessage();\n        return this;\n    }\n\n    public AlarmContext title(String title) {\n        this.title = title;\n        return this;\n    }\n\n    public static AlarmContext build() {\n        return new AlarmContext();\n    }\n\n\n}"
+  },
+  "before_function": "AlarmContext notifyAddress(String notifyAddress) {\n        this.notifyAddress = notifyAddress;\n        return this;\n    }",
+  "after_function": "AlarmContext notifyAttribute(String notifyAttribute) {\n        this.notifyAttribute = notifyAttribute;\n        return this;\n    }"
+}

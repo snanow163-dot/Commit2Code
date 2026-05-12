@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/JobResponseVOConverter.java",
+  "before_name": "toJobResponseVO",
+  "after_name": "convert",
+  "before_class": {
+    "name": "JobResponseVOConverter",
+    "code": "public interface JobResponseVOConverter {\n\n    JobResponseVOConverter INSTANCE = Mappers.getMapper(JobResponseVOConverter.class);\n\n//    @Mappings({\n//        @Mapping(source = \"nextTriggerAt\", target = \"nextTriggerAt\", expression = \"java(DateUtils.toLocalDateTime())\")\n//    })\n    List<JobResponseVO> toJobResponseVOs(List<Job> jobs);\n\n    @Mappings({\n        @Mapping(target = \"nextTriggerAt\", expression = \"java(JobResponseVOConverter.toLocalDateTime(job.getNextTriggerAt()))\")\n    })\n    JobResponseVO toJobResponseVO(Job job);\n\n    static LocalDateTime toLocalDateTime(Long nextTriggerAt) {\n        if (Objects.isNull(nextTriggerAt) || nextTriggerAt == 0) {\n            return null;\n        }\n\n        return DateUtils.toLocalDateTime(nextTriggerAt);\n    }\n}"
+  },
+  "after_class": {
+    "name": "JobResponseVOConverter",
+    "code": "public interface JobResponseVOConverter {\n\n    JobResponseVOConverter INSTANCE = Mappers.getMapper(JobResponseVOConverter.class);\n\n//    @Mappings({\n//        @Mapping(source = \"nextTriggerAt\", target = \"nextTriggerAt\", expression = \"java(DateUtils.toLocalDateTime())\")\n//    })\n    List<JobResponseVO> convertList(List<Job> jobs);\n\n    @Mappings({\n        @Mapping(target = \"nextTriggerAt\", expression = \"java(JobResponseVOConverter.toLocalDateTime(job.getNextTriggerAt()))\")\n    })\n    JobResponseVO convert(Job job);\n\n    static LocalDateTime toLocalDateTime(Long nextTriggerAt) {\n        if (Objects.isNull(nextTriggerAt) || nextTriggerAt == 0) {\n            return null;\n        }\n\n        return DateUtils.toLocalDateTime(nextTriggerAt);\n    }\n}"
+  },
+  "before_function": "JobResponseVO toJobResponseVO(Job job);",
+  "after_function": "JobResponseVO convert(Job job);"
+}

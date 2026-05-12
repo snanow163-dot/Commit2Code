@@ -1,0 +1,18 @@
+{
+  "SHA": "a170b038981c67daca3f482aa125b9637d784c9e",
+  "type": "Move Method",
+  "left_path": "snail-job-client/snail-job-client-job-core/src/main/java/com/aizuda/snailjob/client/job/core/handler/add/MapAddHandler.java",
+  "right_path": "snail-job-client/snail-job-client-job-core/src/main/java/com/aizuda/snailjob/client/job/core/handler/update/ShardingUpdateHandler.java",
+  "before_name": "addShardingArgs",
+  "after_name": "addShardingArgs",
+  "before_class": {
+    "name": "MapAddHandler",
+    "code": "public class MapAddHandler extends AddHandler<MapAddHandler> {\n\n    public MapAddHandler() {\n        this(JobTaskTypeEnum.MAP, null);\n    }\n\n    public MapAddHandler(JobTaskTypeEnum taskType, Integer shardNum) {\n        super(taskType, shardNum);\n        setRouteKey(AllocationAlgorithmEnum.ROUND);\n        setR(this);\n    }\n\n    @Override\n    public MapAddHandler addShardingArgs(String... shardingValue) {\n        return super.addShardingArgs(shardingValue);\n    }\n\n    @Override\n    public MapAddHandler setParallelNum(Integer parallelNum) {\n        return super.setParallelNum(parallelNum);\n    }\n}"
+  },
+  "after_class": {
+    "name": "ShardingUpdateHandler",
+    "code": "\npublic class ShardingUpdateHandler extends UpdateHandler<ShardingUpdateHandler>{\n\n    public ShardingUpdateHandler(Long jobId) {\n        super(jobId);\n        setR(this);\n    }\n\n    @Override\n    protected ShardingUpdateHandler addShardingArgs(String[] shardingValue) {\n        return super.addShardingArgs(shardingValue);\n    }\n\n    @Override\n    protected ShardingUpdateHandler setParallelNum(Integer parallelNum) {\n        return super.setParallelNum(parallelNum);\n    }\n}"
+  },
+  "before_function": "MapAddHandler addShardingArgs(String... shardingValue) {\n        return super.addShardingArgs(shardingValue);\n    }",
+  "after_function": "ShardingUpdateHandler addShardingArgs(String[] shardingValue) {\n        return super.addShardingArgs(shardingValue);\n    }"
+}

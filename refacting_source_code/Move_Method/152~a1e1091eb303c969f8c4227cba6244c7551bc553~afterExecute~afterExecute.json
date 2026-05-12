@@ -1,0 +1,18 @@
+{
+  "SHA": "a1e1091eb303c969f8c4227cba6244c7551bc553",
+  "type": "Move Method",
+  "left_path": "snail-job-client/snail-job-client-job-core/src/main/java/com/aizuda/snailjob/client/job/core/handler/update/RequestUpdateStatusHandler.java",
+  "right_path": "snail-job-client/snail-job-client-job-core/src/main/java/com/aizuda/snailjob/client/job/core/handler/update/UpdateWorkflowStatusHandler.java",
+  "before_name": "afterExecute",
+  "after_name": "afterExecute",
+  "before_class": {
+    "name": "RequestUpdateStatusHandler",
+    "code": "\n\npublic class RequestUpdateStatusHandler extends AbstractRequestHandler<Boolean> {\n    private final RequestUpdateStatusDTO statusDTO;\n    // 1: job; 2: workflow\n    private final int type;\n\n    public RequestUpdateStatusHandler(Long id, int type) {\n        this.statusDTO = new RequestUpdateStatusDTO();\n        this.type = type;\n        setId(id);\n    }\n\n    @Override\n    protected void afterExecute(Boolean aBoolean) {\n\n    }\n\n    @Override\n    protected void beforeExecute() {\n\n    }\n\n    @Override\n    protected Boolean doExecute() {\n        if (type == JobTypeEnum.JOB.getType()) {\n            return (Boolean) client.updateJobStatus(statusDTO).getData();\n        }\n        if (type == JobTypeEnum.WORKFLOW.getType()) {\n            return (Boolean) client.updateWorkFlowStatus(statusDTO).getData();\n        }\n        throw new SnailJobClientException(\"snail job openapi check error\");\n    }\n\n    @Override\n    protected Pair<Boolean, String> checkRequest() {\n        return ValidatorUtils.validateEntity(statusDTO);\n    }\n\n    /**\n     * 设置任务/工作流ID\n     *\n     * @param id\n     * @return\n     */\n    private RequestUpdateStatusHandler setId(Long id) {\n        this.statusDTO.setId(id);\n        return this;\n    }\n\n    /**\n     * 设置状态\n     *\n     * @param status\n     * @return\n     */\n    public RequestUpdateStatusHandler setStatus(StatusEnum status) {\n        this.statusDTO.setJobStatus(status.getStatus());\n        return this;\n    }\n}"
+  },
+  "after_class": {
+    "name": "UpdateWorkflowStatusHandler",
+    "code": "\n\npublic class UpdateWorkflowStatusHandler extends AbstractRequestHandler<Boolean> {\n    private final RequestUpdateStatusDTO statusDTO;\n\n    public UpdateWorkflowStatusHandler(Long id) {\n        this.statusDTO = new RequestUpdateStatusDTO();\n        setId(id);\n    }\n\n    @Override\n    protected void afterExecute(Boolean aBoolean) {\n\n    }\n\n    @Override\n    protected void beforeExecute() {\n\n    }\n\n    @Override\n    protected Boolean doExecute() {\n        Result<Object> result = client.updateWorkFlowStatus(statusDTO);\n        Assert.isTrue(StatusEnum.YES.getStatus() == result.getStatus(),\n                () -> new SnailJobClientException(result.getMessage()));\n        return (Boolean) result.getData();\n    }\n\n    @Override\n    protected Pair<Boolean, String> checkRequest() {\n        return ValidatorUtils.validateEntity(statusDTO);\n    }\n\n    /**\n     * 设置任务/工作流ID\n     *\n     * @param id\n     * @return\n     */\n    private UpdateWorkflowStatusHandler setId(Long id) {\n        this.statusDTO.setId(id);\n        return this;\n    }\n\n    /**\n     * 设置状态\n     *\n     * @param status\n     * @return\n     */\n    public UpdateWorkflowStatusHandler setStatus(StatusEnum status) {\n        this.statusDTO.setJobStatus(status.getStatus());\n        return this;\n    }\n}"
+  },
+  "before_function": "void afterExecute(Boolean aBoolean) {\n\n    }",
+  "after_function": "void afterExecute(Boolean aBoolean) {\n\n    }"
+}

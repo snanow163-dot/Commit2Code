@@ -1,0 +1,21 @@
+{
+  "SHA": "4b272cd8e6fd30a9e63c0708285935c46e7cf87c",
+  "type": "Extract Method",
+  "before_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/idempotent/TimerIdempotent.java",
+  "after_path": "easy-retry-server/easy-retry-server-retry-task/src/main/java/com/aizuda/easy/retry/server/retry/task/support/idempotent/TimerIdempotent.java",
+  "source_method": "isExist",
+  "extracted_method": "getKey",
+  "before_class": {
+    "name": "TimerIdempotent",
+    "code": "public class TimerIdempotent implements IdempotentStrategy<String, String> {\n\n    private static final CopyOnWriteArraySet<String> cache = new CopyOnWriteArraySet<>();\n\n    @Override\n    public boolean set(String key, String value) {\n        return cache.add(key.concat(StrUtil.UNDERLINE).concat(String.valueOf(value)));\n    }\n\n    @Override\n    public String get(String s) {\n       throw new UnsupportedOperationException(\"不支持此操作\");\n    }\n\n    @Override\n    public boolean isExist(String key, String value) {\n        if (key == null || value == null) {\n            log.error(\"异常监控. key:[{}] value:[{}]\", key, value);\n        }\n        return cache.contains(key.concat(StrUtil.UNDERLINE).concat(String.valueOf(value)));\n    }\n\n    @Override\n    public boolean clear(String key, String value) {\n        return cache.removeIf(s-> s.equals(key.concat(StrUtil.UNDERLINE).concat(String.valueOf(value))));\n    }\n}"
+  },
+  "after_classes": [
+    {
+      "name": "TimerIdempotent",
+      "code": "public class TimerIdempotent implements IdempotentStrategy<String, String> {\n\n\n    private static final Cache<String, String> cache;\n\n    static {\n        cache = CacheBuilder.newBuilder()\n            .concurrencyLevel(16) // 并发级别\n            .expireAfterWrite(20, TimeUnit.SECONDS)\n            .build();\n    }\n\n    @Override\n    public boolean set(String key, String value) {\n        cache.put(getKey(key, value), value);\n        return Boolean.TRUE;\n    }\n\n    private static String getKey(final String key, final String value) {\n        return key.concat(StrUtil.UNDERLINE).concat(String.valueOf(value));\n    }\n\n    @Override\n    public String get(String s) {\n       throw new UnsupportedOperationException(\"不支持此操作\");\n    }\n\n    @Override\n    public boolean isExist(String key, String value) {\n        return cache.asMap().containsKey(getKey(key, value));\n    }\n\n    @Override\n    public boolean clear(String key, String value) {\n        cache.invalidate(getKey(key, value));\n        return Boolean.TRUE;\n    }\n}"
+    }
+  ],
+  "before_function": "boolean isExist(String key, String value) {\n        if (key == null || value == null) {\n            log.error(\"异常监控. key:[{}] value:[{}]\", key, value);\n        }\n        return cache.contains(key.concat(StrUtil.UNDERLINE).concat(String.valueOf(value)));\n    }",
+  "after_source_function": "boolean isExist(String key, String value) {\n        return cache.asMap().containsKey(getKey(key, value));\n    }",
+  "after_extracted_function": "String getKey(final String key, final String value) {\n        return key.concat(StrUtil.UNDERLINE).concat(String.valueOf(value));\n    }"
+}

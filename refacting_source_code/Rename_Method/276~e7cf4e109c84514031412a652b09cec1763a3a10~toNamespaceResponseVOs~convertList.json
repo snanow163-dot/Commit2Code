@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/NamespaceResponseVOConverter.java",
+  "before_name": "toNamespaceResponseVOs",
+  "after_name": "convertList",
+  "before_class": {
+    "name": "NamespaceResponseVOConverter",
+    "code": "public interface NamespaceResponseVOConverter {\n\n    NamespaceResponseVOConverter INSTANCE = Mappers.getMapper(NamespaceResponseVOConverter.class);\n\n    List<NamespaceResponseVO> toNamespaceResponseVOs(List<Namespace> namespaces);\n}"
+  },
+  "after_class": {
+    "name": "NamespaceResponseVOConverter",
+    "code": "public interface NamespaceResponseVOConverter {\n\n    NamespaceResponseVOConverter INSTANCE = Mappers.getMapper(NamespaceResponseVOConverter.class);\n\n    List<NamespaceResponseVO> convertList(List<Namespace> namespaces);\n}"
+  },
+  "before_function": "List<NamespaceResponseVO> toNamespaceResponseVOs(List<Namespace> namespaces);",
+  "after_function": "List<NamespaceResponseVO> convertList(List<Namespace> namespaces);"
+}

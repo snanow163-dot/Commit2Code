@@ -1,0 +1,17 @@
+{
+  "SHA": "5f18a0e0c9a62ec716f7386ab0d42ae317179b14",
+  "type": "Rename Method",
+  "path": "easy-retry-server/src/main/java/com/aizuda/easy/retry/server/support/dispatch/DispatchService.java",
+  "before_name": "canCompleteCircuit",
+  "after_name": "fullJustify",
+  "before_class": {
+    "name": null,
+    "code": null
+  },
+  "after_class": {
+    "name": null,
+    "code": null
+  },
+  "before_function": "int canCompleteCircuit(int[] gas, int[] cost) {\n\n            int len = gas.length; // 加油站数量\n            int spare = 0; // 当前剩余汽油量\n            int minSpare = Integer.MAX_VALUE; // 最小剩余汽油量\n            int minIndex = 0; // 最小剩余汽油量对应的加油站索引\n\n            for (int i = 0; i < len; i++) {\n                spare += gas[i] - cost[i]; // 计算当前加油站的剩余汽油量\n                if (spare < minSpare) { // 如果当前剩余汽油量比最小剩余汽油量小\n                    minSpare = spare; // 更新最小剩余汽油量\n                    minIndex = i; // 更新最小剩余汽油量对应的加油站索引\n                }\n            }\n\n            return spare < 0 ? -1 : (minIndex + 1) % len; // 判断是否存在解，并返回结果\n        }",
+  "after_function": null
+}

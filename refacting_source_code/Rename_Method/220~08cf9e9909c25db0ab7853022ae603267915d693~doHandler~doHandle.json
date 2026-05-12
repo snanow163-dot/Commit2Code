@@ -1,0 +1,17 @@
+{
+  "SHA": "08cf9e9909c25db0ab7853022ae603267915d693",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-job-task/src/main/java/com/aizuda/snailjob/server/job/task/support/prepare/job/TerminalJobPrepareHandler.java",
+  "before_name": "doHandler",
+  "after_name": "doHandle",
+  "before_class": {
+    "name": "TerminalJobPrepareHandler",
+    "code": "public class TerminalJobPrepareHandler extends AbstractJobPrePareHandler {\n\n    @Autowired\n    private JobTaskBatchGenerator jobTaskBatchGenerator;\n\n    @Override\n    public boolean matches(Integer status) {\n        return Objects.isNull(status);\n    }\n\n    @Override\n    protected void doHandler(JobTaskPrepareDTO jobPrepareDTO) {\n        log.debug(\"无处理中的数据. jobId:[{}]\", jobPrepareDTO.getJobId());\n\n        // 生成任务批次\n        jobTaskBatchGenerator.generateJobTaskBatch(JobTaskConverter.INSTANCE.toJobTaskGeneratorContext(jobPrepareDTO));\n    }\n}"
+  },
+  "after_class": {
+    "name": "TerminalJobPrepareHandler",
+    "code": "public class TerminalJobPrepareHandler extends AbstractJobPrepareHandler {\n\n    @Autowired\n    private JobTaskBatchGenerator jobTaskBatchGenerator;\n\n    @Override\n    public boolean matches(Integer status) {\n        return Objects.isNull(status);\n    }\n\n    @Override\n    protected void doHandle(JobTaskPrepareDTO jobPrepareDTO) {\n        log.debug(\"无处理中的数据. jobId:[{}]\", jobPrepareDTO.getJobId());\n\n        // 生成任务批次\n        jobTaskBatchGenerator.generateJobTaskBatch(JobTaskConverter.INSTANCE.toJobTaskGeneratorContext(jobPrepareDTO));\n    }\n}"
+  },
+  "before_function": "void doHandler(JobTaskPrepareDTO jobPrepareDTO) {\n        log.debug(\"无处理中的数据. jobId:[{}]\", jobPrepareDTO.getJobId());\n\n        // 生成任务批次\n        jobTaskBatchGenerator.generateJobTaskBatch(JobTaskConverter.INSTANCE.toJobTaskGeneratorContext(jobPrepareDTO));\n    }",
+  "after_function": "void doHandle(JobTaskPrepareDTO jobPrepareDTO) {\n        log.debug(\"无处理中的数据. jobId:[{}]\", jobPrepareDTO.getJobId());\n\n        // 生成任务批次\n        jobTaskBatchGenerator.generateJobTaskBatch(JobTaskConverter.INSTANCE.toJobTaskGeneratorContext(jobPrepareDTO));\n    }"
+}

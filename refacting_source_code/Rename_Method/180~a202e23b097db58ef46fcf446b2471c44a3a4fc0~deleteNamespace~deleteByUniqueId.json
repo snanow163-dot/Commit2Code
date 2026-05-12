@@ -1,0 +1,17 @@
+{
+  "SHA": "a202e23b097db58ef46fcf446b2471c44a3a4fc0",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/NamespaceService.java",
+  "before_name": "deleteNamespace",
+  "after_name": "deleteByUniqueId",
+  "before_class": {
+    "name": "NamespaceService",
+    "code": "public interface NamespaceService {\n\n    Boolean saveNamespace(NamespaceRequestVO namespaceRequestVO);\n\n    Boolean updateNamespace(NamespaceRequestVO namespaceRequestVO);\n\n    PageResult<List<NamespaceResponseVO>> getNamespacePage(NamespaceQueryVO queryVO);\n\n    Boolean deleteNamespace(Long id);\n\n    List<NamespaceResponseVO> getAllNamespace();\n\n}"
+  },
+  "after_class": {
+    "name": "NamespaceService",
+    "code": "public interface NamespaceService {\n\n    Boolean saveNamespace(NamespaceRequestVO namespaceRequestVO);\n\n    Boolean updateNamespace(NamespaceRequestVO namespaceRequestVO);\n\n    PageResult<List<NamespaceResponseVO>> getNamespacePage(NamespaceQueryVO queryVO);\n\n    Boolean deleteByUniqueId(String id);\n\n    List<NamespaceResponseVO> getAllNamespace();\n\n}"
+  },
+  "before_function": "Boolean deleteNamespace(Long id);",
+  "after_function": "Boolean deleteByUniqueId(String id);"
+}

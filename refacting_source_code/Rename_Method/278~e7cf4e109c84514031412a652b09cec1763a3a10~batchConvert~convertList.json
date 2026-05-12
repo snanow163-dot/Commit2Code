@@ -1,0 +1,17 @@
+{
+  "SHA": "e7cf4e109c84514031412a652b09cec1763a3a10",
+  "type": "Rename Method",
+  "path": "snail-job-server/snail-job-server-web/src/main/java/com/aizuda/snailjob/server/web/service/convert/NotifyConfigResponseVOConverter.java",
+  "before_name": "batchConvert",
+  "after_name": "convertList",
+  "before_class": {
+    "name": "NotifyConfigResponseVOConverter",
+    "code": "public interface NotifyConfigResponseVOConverter {\n\n    NotifyConfigResponseVOConverter INSTANCE = Mappers.getMapper(NotifyConfigResponseVOConverter.class);\n\n    @Mappings({\n        @Mapping(target = \"recipientIds\", expression = \"java(NotifyConfigResponseVOConverter.toNotifyRecipientIds(notifyConfig.getRecipientIds()))\")\n    })\n    NotifyConfigResponseVO convert(NotifyConfig notifyConfig);\n\n    List<NotifyConfigResponseVO> batchConvert(List<NotifyConfig> notifyConfigs);\n\n    static Set<Long> toNotifyRecipientIds(String notifyRecipientIdsStr) {\n        if (StrUtil.isBlank(notifyRecipientIdsStr)) {\n            return new HashSet<>();\n        }\n\n        return new HashSet<>(JsonUtil.parseList(notifyRecipientIdsStr, Long.class));\n    }\n}"
+  },
+  "after_class": {
+    "name": "NotifyConfigResponseVOConverter",
+    "code": "public interface NotifyConfigResponseVOConverter {\n\n    NotifyConfigResponseVOConverter INSTANCE = Mappers.getMapper(NotifyConfigResponseVOConverter.class);\n\n    @Mappings({\n        @Mapping(target = \"recipientIds\", expression = \"java(NotifyConfigResponseVOConverter.toNotifyRecipientIds(notifyConfig.getRecipientIds()))\")\n    })\n    NotifyConfigResponseVO convert(NotifyConfig notifyConfig);\n\n    List<NotifyConfigResponseVO> convertList(List<NotifyConfig> notifyConfigs);\n\n    static Set<Long> toNotifyRecipientIds(String notifyRecipientIdsStr) {\n        if (StrUtil.isBlank(notifyRecipientIdsStr)) {\n            return new HashSet<>();\n        }\n\n        return new HashSet<>(JsonUtil.parseList(notifyRecipientIdsStr, Long.class));\n    }\n}"
+  },
+  "before_function": "List<NotifyConfigResponseVO> batchConvert(List<NotifyConfig> notifyConfigs);",
+  "after_function": "List<NotifyConfigResponseVO> convertList(List<NotifyConfig> notifyConfigs);"
+}
